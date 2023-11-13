@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assets/Alianza.png";
 const Navbar = () => {
@@ -10,7 +11,9 @@ const Navbar = () => {
           <p>ALIANZA CHANGE YOUR CITY</p>
         </div>
         <ul>
-          <li>Home</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>How it Works</li>
           <li>Public Works</li>
           <li>Tools</li>
