@@ -1,0 +1,32 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  padding: 8px 40px;
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+  color: #f5cb10;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 30px;
+}
+
+ul li {
+  list-style: none;
+}
+
+ul {
+  display: flex;
+  gap: 60px;
+}
+
+li {
+  font-size: 20px;
+  color: #f5cb10;
+}
