@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import Logo from "../../assets/Allianz-Logo.png";
+import Logo from "../../assets/Alianza.png";
 const Navbar = () => {
   return (
     <div>
