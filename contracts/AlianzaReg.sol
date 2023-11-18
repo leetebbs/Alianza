@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract AllianzReg is ERC721, Ownable {
+contract AlianzaReg is ERC721, Ownable {
     // Struct to store additional information for each NFT
     struct NFTInfo {
         string username;
@@ -27,7 +27,7 @@ contract AllianzReg is ERC721, Ownable {
     event NFTMinted(address indexed owner, uint256 tokenId);
 
     // Constructor
-    constructor() ERC721("AllianzRegistration", "ALZR") Ownable(msg.sender) {
+    constructor() ERC721("AlianzaRegistration", "ALZR") Ownable(msg.sender) {
         setBaseURI(
             "https://bafkreibceeihjkau3ogqcnumprudzxemupvxn2efdapw5np7poxb2i5nky.ipfs.nftstorage.link/?filename=reg.json"
         );
