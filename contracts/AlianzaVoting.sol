@@ -8,6 +8,7 @@ contract AlianzaVoting {
         string name; // name of the proposal
         string scope; // scope of the proposal
         uint256 voteCount; // number of accumulated votes
+        uint256 deadline; // deadline for the proposal in seconds since epoch
     }
 
     struct Admin {
@@ -16,7 +17,7 @@ contract AlianzaVoting {
 
     address mainAdmin; // contract main administrator address
     mapping(address => Admin) public admins;
-    mapping(address => bool) public hasVoted; // to track whether an address has voted
+    mapping(address => bool) internal hasVoted; // to track whether an address has voted
 
     Proposal[] public proposals;
 
@@ -36,6 +37,15 @@ contract AlianzaVoting {
         _;
     }
 
+    event VoteCast(address indexed voter, uint256 indexed proposalIndex);
+    event AdminCreated(address indexed newAdmin);
+    event ProposalCreated(
+        string name,
+        string scope,
+        uint256 deadline,
+        uint256 proposalIndex
+    );
+
     // initialise contract with main admin address and reference to AllianzReg contract
     constructor(address _mainAdmin, address _allianzRegAddress) {
         mainAdmin = _mainAdmin;
@@ -49,21 +59,41 @@ contract AlianzaVoting {
         require(!admins[_newAdmin].isActive, "Admin already exists");
 
         admins[_newAdmin].isActive = true;
+        emit AdminCreated(_newAdmin);
     }
 
-    // function to create a new voting proposal
+    // function to create a new voting proposal with a deadline
     function createAProposal(
         string memory _proposalName,
-        string memory _proposalScope
+        string memory _proposalScope,
+        uint256 _duration // duration of the proposal in seconds
     ) public onlyAdmin {
+        uint256 deadline = block.timestamp + _duration;
         proposals.push(
-            Proposal({name: _proposalName, scope: _proposalScope, voteCount: 0})
+            Proposal({
+                name: _proposalName,
+                scope: _proposalScope,
+                voteCount: 0,
+                deadline: deadline
+            })
+        );
+
+        uint256 proposalIndex = proposals.length - 1; // Index of the newly created proposal
+        emit ProposalCreated(
+            _proposalName,
+            _proposalScope,
+            deadline,
+            proposalIndex
         );
     }
 
     // function to vote on a proposal
     function vote(uint256 _proposalIndex) public onlyVoter {
         require(_proposalIndex < proposals.length, "Invalid proposal index");
+        require(
+            block.timestamp <= proposals[_proposalIndex].deadline,
+            "Voting deadline has passed"
+        );
 
         // Mark the user as voted
         hasVoted[msg.sender] = true;
@@ -71,8 +101,7 @@ contract AlianzaVoting {
         // Increment the vote count for the chosen proposal
         proposals[_proposalIndex].voteCount++;
 
-        // You can emit an event here to log the vote
-        // emit VoteCasted(msg.sender, _proposalIndex);
+        emit VoteCast(msg.sender, _proposalIndex);
     }
 
     // Function to check if an address owns an NFT from AllianzReg contract
