@@ -1,0 +1,10 @@
+Mumabi Network:
+
+AlianzaReg Contract Address : 0xe5986Bc8E45F7938bE72E550Aa47FEb211CfC260
+Alianza DestinationMinter Address : 0xd2541931a9564efAB209f62C03C6FF4f88cE9173
+
+
+
+Alianza SourceMinter Address's:
+
+AVAX fuji : 0x76b963936d3B453Ffc9A1F055ADbE58c24e8174F

@@ -1,21 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract AlianzaReg is ERC721, Ownable {
-    // Struct to store additional information for each NFT
-    struct NFTInfo {
-        string username;
-        string geoAddress;
-        uint256 age;
-    }
-
-    // Mapping from token ID to NFT information
-    mapping(uint256 => NFTInfo) private nftInfo;
-
     // Mapping to track whether an address has already minted an NFT
     mapping(address => bool) private hasMintedNFT;
 
@@ -34,45 +24,22 @@ contract AlianzaReg is ERC721, Ownable {
     }
 
     // Function to mint a new NFT with additional information
-    function mintNFT(
-        string memory _username,
-        string memory _geoAddress,
-        uint256 _age
-    ) external {
-        require(!hasMintedNFT[msg.sender], "Address has already minted an NFT");
+    function mintNFT(address _to) external {
+        require(!hasMintedNFT[_to], "Address has already minted an NFT");
 
         uint256 tokenId = tokenIdCounter;
 
         // Mint the NFT and assign it to the owner
-        _safeMint(msg.sender, tokenId);
-
-        // Store additional information in the mapping
-        nftInfo[tokenId] = NFTInfo({
-            username: _username,
-            geoAddress: _geoAddress,
-            age: _age
-        });
+        _safeMint(_to, tokenId);
 
         // Mark the address as having minted an NFT
-        hasMintedNFT[msg.sender] = true;
+        hasMintedNFT[_to] = true;
 
         // Increment the token ID counter
         tokenIdCounter = tokenIdCounter + 1;
 
         // Emit an event
-        emit NFTMinted(msg.sender, tokenId);
-    }
-
-    // Function to get the information of a specific NFT
-    function getNFTInfo(
-        uint256 _tokenId
-    )
-        external
-        view
-        returns (string memory username, string memory geoAddress, uint256 age)
-    {
-        NFTInfo memory info = nftInfo[_tokenId];
-        return (info.username, info.geoAddress, info.age);
+        emit NFTMinted(_to, tokenId);
     }
 
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
