@@ -18,7 +18,7 @@ contract DestinationMinter is CCIPReceiver {
         Client.Any2EVMMessage memory message
     ) internal override {
         // (bool success, ) = address(nft).call(message.data);
-        (bool success, ) = address(nft).call{gas: 2000000}(message.data);
+        (bool success, ) = address(nft).call{gas: 200000000}(message.data);
         require(success, "NFT minting failed");
         emit MintCallSuccessfull();
     }

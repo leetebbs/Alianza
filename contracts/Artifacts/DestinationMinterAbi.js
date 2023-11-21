@@ -2,6 +2,39 @@ export const DestinationMinterAbi = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "router",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "nftAddress",
+        type: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "router",
+        type: "address",
+      },
+    ],
+    name: "InvalidRouter",
+    type: "error",
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "MintCallSuccessfull",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
         components: [
           {
             internalType: "bytes32",
@@ -50,39 +83,6 @@ export const DestinationMinterAbi = [
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "router",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "nftAddress",
-        type: "address",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "router",
-        type: "address",
-      },
-    ],
-    name: "InvalidRouter",
-    type: "error",
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: "MintCallSuccessfull",
-    type: "event",
   },
   {
     inputs: [],
