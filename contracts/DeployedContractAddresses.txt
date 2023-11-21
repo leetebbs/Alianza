@@ -1,10 +1,19 @@
 Mumabi Network:
 
 AlianzaReg Contract Address : 0xe5986Bc8E45F7938bE72E550Aa47FEb211CfC260
-Alianza DestinationMinter Address : 0xd2541931a9564efAB209f62C03C6FF4f88cE9173
+Alianza DestinationMinter Address : 0x8c8111cBF5888aeCb4047B93Af6462c36A8b5b71
 
 
 
 Alianza SourceMinter Address's:
 
-AVAX fuji : 0x76b963936d3B453Ffc9A1F055ADbE58c24e8174F
+AVAX fuji : 0x759F71Fe9F6366a4bb590Fafd996F41Bb617d34B
+
+
+Mumbai chain selector : 12532609583862916517
+
+REMEMEBER YOU CAN ONLY MINT ONE NFT PER ADDRESS!!!!!!!!!!!!!!!!!
+
+
+success tx
+https://ccip.chain.link/msg/0xab9715a2f1df4be07a92a039dd99bc77ba033fad81ea575e034ff8986cb85be6
