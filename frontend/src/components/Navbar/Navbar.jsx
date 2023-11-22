@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { Link } from 'react-router-dom';  
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import image from '../../constants/images';
-import './navbar.css';
+import './Navbar.css';
 
 const Navbar = () => {
   // NAVBAR menu options
