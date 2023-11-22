@@ -1,0 +1,124 @@
+.webapp__header {
+    display: flex;
+    flex-direction: row;
+}
+
+.webapp__header-container {
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: flex-start; 
+   flex-direction: column;
+   margin: 5rem 3rem;
+}
+
+.webapp__header-container h1 {
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.webapp__header-container p {
+    font-family: var(--font-family);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--color-text);
+    
+    margin-top: 1.5rem;
+}
+
+.webapp__header-container__btn {
+    width: 100%;
+    margin: 2rem 0 1rem;
+    
+    display: flex;    
+}
+/* inside the input */
+.webapp__header-container__btn button{
+    flex: 2;
+    width: 100%;
+    min-height: 50px;
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 27px;
+    background: var(--color-btn) ;
+    border: 2px solid var(--color-footer);
+    padding: 0 1rem;
+    outline: none ;
+    color: #fff;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.webapp__header-container__btn button:hover{
+    font-size: 22px;
+    background: var(--color-btn);
+    border: 2px solid var(--color-text);
+    color: var(--color-text);
+    
+}
+
+.webapp__header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.webapp__header-image img {
+    width: 80%;
+    height: auto;
+}
+
+@media screen and (max-width: 1050px) {
+    .webapp__header{
+        flex-direction: column;
+    }
+    .webapp__header-container {
+        margin:  0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .webapp__header h1{
+        font-size: 48px;
+        line-height: 60px;
+    }
+    .webapp__header p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .webapp__header-container__people {
+        flex-direction: column ;
+    }
+    .webapp__header-container__people p {
+        margin: 0;
+    }
+    .webapp__header-container__input input, 
+    .webapp__header-container__input button {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px){
+    .webapp__header h1{
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .webapp__header p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .webapp__header-container__input input, 
+    .webapp__header-container__input button {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
