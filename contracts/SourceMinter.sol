@@ -13,22 +13,27 @@ contract AlianzaSourceMinter {
 
     address immutable i_router;
     address immutable i_link;
+    uint64 destinationChainSelector;
+    address receiver;
 
     event MessageSent(bytes32 messageId);
 
-    constructor(address router, address link) {
+    constructor(
+        address router,
+        address link,
+        uint64 _destinationChainSelector,
+        address _receiver
+    ) {
         i_router = router;
         i_link = link;
         LinkTokenInterface(i_link).approve(i_router, type(uint256).max);
+        destinationChainSelector = _destinationChainSelector;
+        receiver = _receiver;
     }
 
     receive() external payable {}
 
-    function mint(
-        uint64 destinationChainSelector,
-        address receiver,
-        PayFeesIn payFeesIn
-    ) external {
+    function mint(PayFeesIn payFeesIn) external {
         Client.EVM2AnyMessage memory message = Client.EVM2AnyMessage({
             receiver: abi.encode(receiver),
             data: abi.encodeWithSignature("mintNFT(address)", msg.sender),
@@ -45,7 +50,7 @@ contract AlianzaSourceMinter {
         bytes32 messageId;
 
         if (payFeesIn == PayFeesIn.LINK) {
-            LinkTokenInterface(i_link).approve(i_router, fee);
+            // LinkTokenInterface(i_link).approve(i_router, fee);
             messageId = IRouterClient(i_router).ccipSend(
                 destinationChainSelector,
                 message
