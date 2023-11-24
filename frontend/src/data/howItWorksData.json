@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Step 1: Smart Contracts",
+    "text": "Smart contracts are self-executing agreements stored on the blockchain. They are created and managed for each public work, programmed to automatically execute via Chainlink when certain conditions are met.",
+    "media": "/logoAlianza02.png",
+    "alt_media": "Smart Contracts Image",
+    "btn_text": "Learn More about Smart Contracts",
+    "btn_link": "https://allianz-teal.vercel.app/"
+  },
+  {
+    "title": "Step 2: Token Purchase",
+    "text": "Tokens are purchased through our smart contracts on Polygon, which use Chainlink to interact with payment service APIs. The price of tokens is determined by real-time cryptocurrency price data provided by Chainlink.",
+    "media": "/logoAlianza02.png",
+    "alt_media": "Token Purchase Image",
+    "btn_text": "Purchase Tokens",
+    "btn_link": "https://allianz-teal.vercel.app/"
+  },
+  {
+    "title": "Step 3: Financing Public Works",
+    "text": "Once you have tokens, you can choose the public works you want to finance. Your tokens are used to fund these projects, driving their progress.",
+    "media": "/logoAlianza02.png",
+    "alt_media": "Financing Image",
+    "btn_text": "View Public Works",
+    "btn_link": "https://allianz-teal.vercel.app/"
+  },
+  {
+    "title": "Step 4: Tracking Progress and Earning Rewards",
+    "text": "Track the progress of public works in real time and earn rewards based on your contribution. Real -time data such as work progress reports and tax or utility records are provided by Chainlink, enabling smart contracts to automatically distribute rewards.",
+    "media": "/logoAlianza02.png",
+    "alt_media": "Tracking and Earning Image",
+    "btn_text": "Start Tracking and Earning",
+    "btn_link": "https://allianz-teal.vercel.app/"
+  }
+ 
+]
