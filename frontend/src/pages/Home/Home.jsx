@@ -7,7 +7,13 @@ const Home = () => {
         <Header />
         <About />
         <HowItWork />
-        <Cta />
+        <Cta 
+          cta_title={`Get Involved`}
+          cta_text={`Join us in transforming our city. Purchase tokens, finance public works, track progress,
+          and earn rewards. Your participation makes a difference.`}
+          cta_btn_text={`Sign Up Now`}
+          cta_btn_link={`https://allianz-teal.vercel.app/`}
+        />
     </>
   )
 }
