@@ -1,4 +1,5 @@
 import React from 'react'
+import './HowItWorks.css'
 import Intro from '../../components/intro/Intro'
 import Steps from '../../containers/Steps/Steps'
 // JSON file to manage info 
@@ -15,21 +16,23 @@ const HowItWorks = () => {
           participation to the financing of municipal public works. Let's explore how it all works.`}
         />
       </section>
-      {howItWorksData.map((step, index) => (
-      <Steps
-        key={index}
-        title={step.title}
-        text={step.text}
-        media={step.media}
-        alt_media={step.alt_media}
-        // This prop is to render any button component
-        btnLink = {<BtnLink
-          btn_text={step.btn_text}
-          btn_link={step.btn_link}
-                  />}
-        
-      />
-    ))}
+      <div className='page__hiw'>
+        {howItWorksData.map((step, index) => (
+        <Steps
+          key={index}
+          title={step.title}
+          text={step.text}
+          media={step.media}
+          alt_media={step.alt_media}
+          // This prop is to render any button component
+          btnLink = {<BtnLink
+            btn_text={step.btn_text}
+            btn_link={step.btn_link}
+                    />}
+          
+        />
+        ))}
+      </div>
       <Cta
         cta_title={`Ready to Make a Diffence?`}
         cta_text={`Join us in transforming our city. Purchase tokens, finance
