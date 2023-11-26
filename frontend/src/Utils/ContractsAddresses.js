@@ -4,5 +4,5 @@ export const avaxFujiNFTMintingAddress =
   "0x759F71Fe9F6366a4bb590Fafd996F41Bb617d34B"; //ccip nft minting contract on the fuji testnet  function call mint(0)
 
 // The contracts will only allow for one NFT per address to be minted.
-// artifacts/registrationABI.js - exports Required ABI for registrationNFT contract
-// artifacts/sourceMinterABI.js - exports Required ABI for avaxFujiNFTMinting contract
+// Utils/Abis/mumbaiNFTRegistrationABI - exports Required ABI for registrationNFT contract on mumbai
+// Utils/Abis/avaxFujiNFTRegistrationABI - exports Required ABI for avaxFujiNFTMinting contract on avax fuji
