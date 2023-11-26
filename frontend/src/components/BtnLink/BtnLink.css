@@ -22,7 +22,7 @@ button:hover{
     color: var(--color-text);
     
 }
-
+/* @MEDIA */
 @media screen and (max-width: 1050px){
     button{
         max-width:350px;
@@ -30,6 +30,17 @@ button:hover{
         font-size: 18px;
         line-height: 28px;
         padding: 0 0.5rem;
-        
+    }
+}
+@media screen and (max-width: 550px){
+    button{
+        max-width:150px;
+        min-height: 70px;
+        font-size: 14px;
+        line-height: 18px;
+        padding: 0 0.5rem;
+    }
+    button:hover{
+        font-size: 16px;
     }
 }
