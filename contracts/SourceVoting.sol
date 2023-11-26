@@ -5,7 +5,7 @@ import {LinkTokenInterface} from "@chainlink/contracts/src/v0.8/shared/interface
 import {IRouterClient} from "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouterClient.sol";
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
 
-contract AlianzaSourceMinter {
+contract AlianzaSourceVoter {
     enum PayFeesIn {
         Native,
         LINK
@@ -33,10 +33,19 @@ contract AlianzaSourceMinter {
 
     receive() external payable {}
 
-    function mint(PayFeesIn payFeesIn) external {
+    function vote(
+        uint256 _proposalIndex,
+        bool _inSupport,
+        PayFeesIn payFeesIn
+    ) external {
         Client.EVM2AnyMessage memory message = Client.EVM2AnyMessage({
             receiver: abi.encode(receiver),
-            data: abi.encodeWithSignature("mintNFT(address)", msg.sender),
+            data: abi.encodeWithSignature(
+                "vote(address,uint256,bool)",
+                msg.sender,
+                _proposalIndex,
+                _inSupport
+            ),
             tokenAmounts: new Client.EVMTokenAmount[](0),
             extraArgs: "",
             feeToken: payFeesIn == PayFeesIn.LINK ? i_link : address(0)

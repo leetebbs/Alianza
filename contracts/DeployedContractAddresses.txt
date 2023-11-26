@@ -1,13 +1,12 @@
 Mumabi Network:
 
-AlianzaReg Contract Address : 0xe5986Bc8E45F7938bE72E550Aa47FEb211CfC260
-Alianza DestinationMinter Address : 0x8c8111cBF5888aeCb4047B93Af6462c36A8b5b71
+AlianzaReg Contract Address : 0x8428e4ec0FD3E96f56c98229132dac9b62d325df
+Alianza DestinationMinter Address : 0x1142259106e8f31606Ba8785Bd2a5bAB6cd58B08
+Alianza SourceMinter Address's: AVAX fuji : 0x2242cF684DAC41CC45a8B07eF5E027dc28322e49
 
-
-
-Alianza SourceMinter Address's:
-
-AVAX fuji : 0x759F71Fe9F6366a4bb590Fafd996F41Bb617d34B
+Alianza Voting contract : 0x333da2047FD464672fC9FF494A98bc6b516b8330
+Alianza destination voting contract : 0xbc23Bf290643bd56117Ce11399e20fbcf7a55941
+Alianza source voting contract : 0x718E76082cAEF0CaF1900e705bdBbc10f541eA91
 
 
 Mumbai chain selector : 12532609583862916517
@@ -15,5 +14,57 @@ Mumbai chain selector : 12532609583862916517
 REMEMEBER YOU CAN ONLY MINT ONE NFT PER ADDRESS!!!!!!!!!!!!!!!!!
 
 
-success tx
+success ccip nft mint tx
 https://ccip.chain.link/msg/0xab9715a2f1df4be07a92a039dd99bc77ba033fad81ea575e034ff8986cb85be6
+
+success ccip voting tx
+https://ccip.chain.link/msg/0x437a8f119bfb8fbf96f04c6933e267363c7cd1ef537333fce256bb2fb2df2712
+
+
+//////////////// info ////////////////
+admin address : 0x1ABc133C222a185fEde2664388F08ca12C208F76
+
+Deploy alianzareg to mumbai
+alianzareg address: 0x8428e4ec0FD3E96f56c98229132dac9b62d325df
+
+Deploy DestinationMinter to mumbai:
+will need:-
+ccip router address for mumbai: 0x70499c328e1e2a3c41108bd3730f6670a44595d1
+alianzareg Address: 0x8428e4ec0FD3E96f56c98229132dac9b62d325df
+returns:-
+destination minteraddress:- 0x1142259106e8f31606Ba8785Bd2a5bAB6cd58B08
+
+
+Deploy Alianza SourceMinter to Avax fuji:
+will need :
+fuji ccip router address:0x554472a2720e5e7d5d3c817529aba05eed5f82d8
+fuji link address: 0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846
+destination chain selector (mumbai): 12532609583862916517
+destination minter address: 0x1142259106e8f31606Ba8785Bd2a5bAB6cd58B08
+need to fund with native avax and link tokens.
+returns sourceminter adrress: 0x2242cF684DAC41CC45a8B07eF5E027dc28322e49
+
+deploy alainzavoting to mumbai
+will need:
+main admin address:0x1ABc133C222a185fEde2664388F08ca12C208F76
+alianzareg Address:0x8428e4ec0FD3E96f56c98229132dac9b62d325df
+returns:-
+aliianzavoting address:0x333da2047FD464672fC9FF494A98bc6b516b8330
+
+
+deploy destinationVoter to mumbai
+will need:-
+Mumabi Router address:0x70499c328e1e2a3c41108bd3730f6670a44595d1
+AlianzaVoting Address:0x333da2047FD464672fC9FF494A98bc6b516b8330
+returns:-
+Destination voter address:0xbc23Bf290643bd56117Ce11399e20fbcf7a55941
+
+deploy SourceVoter to avax fuji
+will need 
+avax ccip router address:0x554472a2720e5e7d5d3c817529aba05eed5f82d8
+avax link token address:0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846
+destination chain selector (mumbai):12532609583862916517
+Destination voter address:0xbc23Bf290643bd56117Ce11399e20fbcf7a55941
+returns:-
+SourceVoter address:0x718E76082cAEF0CaF1900e705bdBbc10f541eA91
+fund SourceVoter with link and native avax.

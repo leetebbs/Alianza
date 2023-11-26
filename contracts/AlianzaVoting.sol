@@ -17,7 +17,7 @@ contract AlianzaVoting {
         bool isActive; // flag to indicate if the admin is active
     }
 
-    address mainAdmin; // contract main administrator address
+    address public mainAdmin; // contract main administrator address
     mapping(address => Admin) public admins;
     mapping(address => bool) public hasVoted; // to track whether an address has voted
 
@@ -101,8 +101,14 @@ contract AlianzaVoting {
         );
     }
 
-    // function to vote on a proposal
-    function vote(uint256 _proposalIndex, bool _inSupport) public onlyVoter {
+    // function to vote on a proposal !!!  onlyVoter modifier is maybe an issue when
+    // function vote(address _address, uint256 _proposalIndex, bool _inSupport) public onlyVoter {
+    function vote(
+        address _address,
+        uint256 _proposalIndex,
+        bool _inSupport
+    ) public {
+        require(hasNFT(_address), "You do not have an NFT");
         require(_proposalIndex < proposals.length, "Invalid proposal index");
         require(
             !proposals[_proposalIndex].hasEnded,

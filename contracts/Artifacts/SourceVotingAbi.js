@@ -1,4 +1,4 @@
-export const SourceMinterAbi = [
+export const sourceVotingABI = [
   {
     inputs: [
       {
@@ -41,12 +41,22 @@ export const SourceMinterAbi = [
   {
     inputs: [
       {
-        internalType: "enum AlianzaSourceMinter.PayFeesIn",
+        internalType: "uint256",
+        name: "_proposalIndex",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "_inSupport",
+        type: "bool",
+      },
+      {
+        internalType: "enum AlianzaSourceVoter.PayFeesIn",
         name: "payFeesIn",
         type: "uint8",
       },
     ],
-    name: "mint",
+    name: "vote",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
