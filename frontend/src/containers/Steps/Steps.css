@@ -37,26 +37,20 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     font-size: 54px;
     line-height: 65px;
     font-weight: 800;
-    max-width: 710px;
+    width: 710px;
     font-family: var(--font-family);
-    
-
-
 }
 
 .webapp__steps-container {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
-    
-
     margin-top: 2rem;
 }
 
 .webapp__steps-info,
 .webapp__steps-media {
- 
-  margin: 2rem;
+   margin: 2rem;
 }
 
 .webapp__steps-info {
@@ -87,7 +81,7 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .webapp__steps-media image {
-    width: 500px;
+    width: 800px;
     height: auto;
 
 }
@@ -131,7 +125,7 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
       .webapp__steps-media {
         flex: 1;
-        width: 600px;
+        max-width: 600px;
     }
 }
 
@@ -144,9 +138,9 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     .webapp__steps-heading {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
-        margin: 1.5rem;
+        /* margin: 1.5rem; */
     }
     .webapp__steps-heading h2 {
         font-size: 40px;
@@ -173,9 +167,6 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     .webapp__steps-info span {
         margin-right: 0.2rem;
     }
-    .webapp__steps-media {
-        width: 700px;
-    }
     .webapp__steps-media image {
         width: 100%;
     }
@@ -185,7 +176,8 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     .webapp__steps {
         display: flex;
         flex-direction: column;
-        padding: 0.5rem;
+        padding: 0.25rem;
+        margin: 1rem;
     }
     .webapp__steps-heading {
         margin: 1rem;
@@ -211,7 +203,7 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         margin-right: 0.025rem;
     }
     .webapp__steps-media {
-        width: 450px;
+        max-width: 400px;
     }
     .webapp__steps-media image {
         width: 100%;
@@ -226,7 +218,7 @@ filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     .webapp__steps-heading h2 {
         font-size: 18px;
         line-height: 25px;
-        max-width: 3500px;
+        max-width: 250px;
     }
     .webapp__steps-container {
         margin-top: 1rem;
