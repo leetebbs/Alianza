@@ -90,18 +90,16 @@
     .section__padding {
         padding: 4rem;
       }
-    
       .section__margin {
-        padding: 4rem;
+        margin: 4rem;
       }
   }
   
   @media screen  and (max-width: 550px) {
     .section__padding {
-        padding: 4rem 2rem;
+        padding: 2rem 1rem;
       }
-    
-      .section__margin {
-        padding: 4rem 2rem;
+    .section__margin {
+        margin: 2rem 1rem;
       }
   }
