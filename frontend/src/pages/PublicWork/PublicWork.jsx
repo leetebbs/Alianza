@@ -4,8 +4,9 @@ import Intro from '../../components/intro/Intro'
 import { Cta } from '../../components'
 import BtnLink from '../../components/BtnLink/BtnLink'
 import PublicWorkSection from '../../containers/PublicWorkSection/PublicWorkSection'
-
-
+import PublicWorkList from '../../components/PublicWorkList/PublicWorkList'
+import fakePublicWorksData from '../../data/fakeDataOnPW'
+console.log(fakePublicWorksData);
 const PublicWork = () => {
   
   // INTRO Content
@@ -55,6 +56,9 @@ const PublicWork = () => {
         <PublicWorkSection
             title={publicWorkListing.title}
             text={publicWorkListing.text}
+            gridDetails={<PublicWorkList 
+                publicWorksData={fakePublicWorksData}
+            />}
             btnLink={<BtnLink 
             btn_text={publicWorkListing.btnText}
             btn_link={publicWorkListing.btnLink}
@@ -65,6 +69,9 @@ const PublicWork = () => {
         <PublicWorkSection
              title={completedPublicWork.title}
              text={completedPublicWork.text}
+             gridDetails={<PublicWorkList
+                publicWorksData={fakePublicWorksData}
+                />}
              btnLink={<BtnLink 
              btn_text={completedPublicWork.btnText}
              btn_link={completedPublicWork.btnLink}
