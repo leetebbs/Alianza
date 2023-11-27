@@ -45,27 +45,27 @@
         display: flex;
         justify-content: space-between;
         align-items: stretch;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
     
     .webapp__PWS-info,
     .webapp__PWS-grid {
-       margin: 2rem;
+       margin: 2rem 1rem;
     }
     
     .webapp__PWS-info {
-        flex: 1.5;
+        flex: 0.5;
         font-family: var(--font-family);
         font-weight: 500;
-        font-size: 30px;
+        font-size: 20px;
         line-height: 45px;
         color: var(--color-text);
         text-shadow: 8px 4px 8px #000;
-        text-align:justify;
+        text-align:left;
     }    
        
     .webapp__PWS-grid {
-        flex: 0.5;
+        flex: 1.5;
         display: flex;
         justify-content: center;
         align-items: center;
