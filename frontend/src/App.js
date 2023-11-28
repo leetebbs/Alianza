@@ -10,6 +10,7 @@ import PublicWork from "./pages/PublicWork/PublicWork";
 // STYLES
 import "./App.css";
 import "./index.css";
+import Transparency from "./pages/Transparency/Transparency";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/public-works" element={<PublicWork />} />
+        <Route path="/transparency" element={<Transparency />} />
       </Routes>
       <Footer />
     </div>
