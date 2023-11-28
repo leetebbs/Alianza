@@ -6,12 +6,14 @@
 }
 
 .webapp__PWL h2 {
+  font-family: var(--font-family);
   font-size: 34px;
   line-height: 45px;
   font-weight: 800;
   margin-bottom: 1rem;
   font-family: var(--font-family);
   color: var(--color-text);
+  text-shadow: 10px #000;
 }
 
 
@@ -24,6 +26,11 @@
     border: 2px solid var(--color-gray);
     border-radius: 5px; 
   }
+
+.webapp__PWL-Container li:hover {
+  background: var(--color-footer);
+  color: var(--color-gray);
+}  
   .webapp__PWL-Container::-webkit-scrollbar {
     width: 2px; 
   }
@@ -48,12 +55,52 @@
   }
   
   .webapp__PWL-Item h3 {
+    font-family: var(--font-family);
+    font-weight: 700;
     margin-bottom: 10px;
-    color: var(--color-golden); 
+    color: var(--color-golden);
+    text-shadow: 10px 2px 10px #000; 
   }
   
   .webapp__PWL-Item p {
+    font-family: var(--font-family);
+    font-weight: 400;
     margin-left: 1rem;
     line-height: 30px;
   }
   
+  /* @MEDIA */
+
+  @media screen and (max-width: 1050px) {
+    .webapp__PWL-Container {
+      max-width: 550px;
+    }
+  } 
+  @media screen and (max-width: 950px) {
+    .webapp__PWL-Container {
+      max-width: 450px;
+    }
+  } 
+  @media screen and (max-width: 650px) {
+    .webapp__PWL-Container {
+      max-width: 300px;
+    }
+    .webapp__PWL h2 {
+      font-size: 20px;
+      line-height: 35px;
+      
+    }
+  } 
+  @media screen and (max-width: 450px) {
+    .webapp__PWL-Container {
+      max-width: 220px;
+    }
+    .webapp__PWL-Item h3 {
+     font-size: 16px; 
+    }
+    .webapp__PWL-Item p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  } 
