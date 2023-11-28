@@ -29,7 +29,6 @@
 
 .webapp__PWL-Container li:hover {
   background: var(--color-footer);
-  color: var(--color-gray);
 }  
   .webapp__PWL-Container::-webkit-scrollbar {
     width: 2px; 
@@ -79,6 +78,7 @@
   @media screen and (max-width: 950px) {
     .webapp__PWL-Container {
       max-width: 450px;
+      max-height: 300px;
     }
   } 
   @media screen and (max-width: 650px) {

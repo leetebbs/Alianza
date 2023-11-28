@@ -8,7 +8,7 @@ const PublicWorkList = ({ title, publicWorksData }) => {
     return (
     <>
       <div className='webapp__PWL'>
-      <h2>{title}</h2>  
+      {/* <h2>{title}</h2>   */}
       <div className="webapp__PWL-Container">
       
       <ul>
