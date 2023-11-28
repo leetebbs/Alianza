@@ -40,7 +40,7 @@ const Transparency = () => {
             title={introInfo.title}
             text={introInfo.text}
         />
-        {/* Creation and Management */}
+        {/* Transparency and Traceability */}
         <section className='page__hiw'>
             <Steps 
                 title={transparencyContent.title}
