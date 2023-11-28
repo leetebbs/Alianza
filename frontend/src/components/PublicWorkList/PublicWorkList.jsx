@@ -1,14 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import './PublicWorkList.css'
-const PublicWorkList = ({ publicWorksData }) => {
+const PublicWorkList = ({ title, publicWorksData }) => {
     if (!publicWorksData) {
         return <div className=''>Loading LIst...</div>
     }
     return (
     <>
       <div className='webapp__PWL'>
-      <h2>Ongoing Public Works</h2>  
+      {/* <h2>{title}</h2>   */}
       <div className="webapp__PWL-Container">
       
       <ul>

@@ -53,10 +53,12 @@ const PublicWork = () => {
             text={introInfo.text}
         />
         {/* Public Work Listing */}
+        <section className='page__hiw'>
         <PublicWorkSection
             title={publicWorkListing.title}
             text={publicWorkListing.text}
             gridDetails={<PublicWorkList 
+                title={`On going Public Works`}
                 publicWorksData={fakePublicWorksData}
             />}
             btnLink={<BtnLink 
@@ -64,12 +66,15 @@ const PublicWork = () => {
             btn_link={publicWorkListing.btnLink}
             />}
         />
+        </section>
         
         {/* Completed Public Work */}
+        <section className='page__hiw'>
         <PublicWorkSection
              title={completedPublicWork.title}
              text={completedPublicWork.text}
              gridDetails={<PublicWorkList
+                title={`Completed Public Works`}
                 publicWorksData={fakePublicWorksData}
                 />}
              btnLink={<BtnLink 
@@ -77,6 +82,7 @@ const PublicWork = () => {
              btn_link={completedPublicWork.btnLink}
              />}
         />
+        </section>
 
         <Cta
             cta_title={ctaInfo.title}
