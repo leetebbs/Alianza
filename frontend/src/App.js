@@ -11,6 +11,7 @@ import PublicWork from "./pages/PublicWork/PublicWork";
 import "./App.css";
 import "./index.css";
 import Transparency from "./pages/Transparency/Transparency";
+import Incentives from "./pages/Incentives/Incentives";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/public-works" element={<PublicWork />} />
         <Route path="/transparency" element={<Transparency />} />
+        <Route path="/incentives" element={<Incentives />} />
       </Routes>
       <Footer />
     </div>
