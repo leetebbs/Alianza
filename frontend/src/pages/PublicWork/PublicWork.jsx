@@ -57,6 +57,7 @@ const PublicWork = () => {
             title={publicWorkListing.title}
             text={publicWorkListing.text}
             gridDetails={<PublicWorkList 
+                title={`Ongoing Public Works"`}
                 publicWorksData={fakePublicWorksData}
             />}
             btnLink={<BtnLink 
@@ -70,6 +71,7 @@ const PublicWork = () => {
              title={completedPublicWork.title}
              text={completedPublicWork.text}
              gridDetails={<PublicWorkList
+                title={`Completed Public Works`}
                 publicWorksData={fakePublicWorksData}
                 />}
              btnLink={<BtnLink 

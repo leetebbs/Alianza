@@ -21,6 +21,8 @@
     gap: 20px;
     max-height: 350px;
     overflow-y: auto;
+    border: 2px solid var(--color-gray);
+    border-radius: 5px; 
   }
   .webapp__PWL-Container::-webkit-scrollbar {
     width: 2px; 
@@ -36,7 +38,7 @@
   }
   .webapp__PWL-Item {
     padding: 15px;
-    border-radius: 5px;
+    border: 2px solid var(--color-gray)
     
   }
   
@@ -51,7 +53,7 @@
   }
   
   .webapp__PWL-Item p {
-    margin: 0;
+    margin-left: 1rem;
     line-height: 30px;
   }
   

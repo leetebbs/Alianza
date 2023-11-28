@@ -7,16 +7,13 @@
   --gradient-bar: linear-gradient(103.22deg, #d3b003 -13.86%, #Fff 99.55%);
   
   
-  --color-footer : linear-gradient(
-    to top,#000, #383e3e ,#d3b003);
+  --color-footer : linear-gradient(to top,#000, #383e3e ,#d3b003);
   --color-blog: #042c54;
   --color-text: #fff;
   --color-gray: #383e3e;
   --color-golden: #d3b003;
-  --color-subtext: linear-gradient(
-    to top,#FFF ,#d3b003);
-  --color-btn:  linear-gradient(
-    to top,#383e3e ,#d3b003);
+  --color-subtext: linear-gradient(to top,#FFF ,#d3b003);
+  --color-btn: linear-gradient(to top,#383e3e ,#d3b003);
     
 }
 
