@@ -10,7 +10,7 @@ contract AlianzaVoting {
         uint256 forVotes; // number of accumulated positive votes
         uint256 againstVotes; // number of accumulated negative votes
         uint256 deadline; // deadline for the proposal in seconds since epoch
-        bool hasEnded; // flag to indicate whether the proposal has ended
+        bool hasAdminEnded; // flag to indicate whether the proposal has ended
     }
 
     struct Admin {
@@ -22,8 +22,6 @@ contract AlianzaVoting {
     mapping(address => bool) public hasVoted; // to track whether an address has voted
 
     Proposal[] public proposals;
-    uint256[] public activeProposalIndices; // indices of active proposals
-    uint256[] public endedProposalIndices; // indices of ended proposals
     uint256 public totalNumberOfProposalsCreated = 0; // total number of proposals created.
 
     AlianzaReg public allianzReg; // Reference to the AllianzReg contract
@@ -31,14 +29,6 @@ contract AlianzaVoting {
     // modifier to only allow admins to execute functions
     modifier onlyAdmin() {
         require(admins[msg.sender].isActive, "Only admins can execute this");
-        _;
-    }
-
-    // modifier to only allow non-admins to vote
-    modifier onlyVoter() {
-        require(!admins[msg.sender].isActive, "Admins cannot vote");
-        require(hasNFT(msg.sender), "Address does not own an NFT");
-        require(!hasVoted[msg.sender], "Address has already voted");
         _;
     }
 
@@ -87,11 +77,11 @@ contract AlianzaVoting {
                 forVotes: 0,
                 againstVotes: 0,
                 deadline: deadline,
-                hasEnded: false
+                hasAdminEnded: false
             })
         );
 
-        activeProposalIndices.push(proposalIndex);
+        // activeProposalIndices.push(proposalIndex);
         totalNumberOfProposalsCreated = totalNumberOfProposalsCreated + 1;
         emit ProposalCreated(
             _proposalName,
@@ -101,26 +91,23 @@ contract AlianzaVoting {
         );
     }
 
-    // function to vote on a proposal !!!  onlyVoter modifier is maybe an issue when
-    // function vote(address _address, uint256 _proposalIndex, bool _inSupport) public onlyVoter {
+    // function to vote on a proposal
     function vote(
         address _address,
         uint256 _proposalIndex,
         bool _inSupport
     ) public {
+        require(!admins[_address].isActive, "Admins cannot vote");
         require(hasNFT(_address), "You do not have an NFT");
+        require(!hasVoted[_address], "Address has already voted");
         require(_proposalIndex < proposals.length, "Invalid proposal index");
-        require(
-            !proposals[_proposalIndex].hasEnded,
-            "Proposal has already ended"
-        );
         require(
             block.timestamp <= proposals[_proposalIndex].deadline,
             "Voting deadline has passed"
         );
 
         // Mark the user as voted
-        hasVoted[msg.sender] = true;
+        hasVoted[_address] = true;
 
         // Update the vote count for the chosen proposal
         if (_inSupport) {
@@ -129,43 +116,18 @@ contract AlianzaVoting {
             proposals[_proposalIndex].againstVotes++;
         }
 
-        emit VoteCast(msg.sender, _proposalIndex, _inSupport);
+        emit VoteCast(_address, _proposalIndex, _inSupport);
     }
 
     // Function to end a proposal
     function endProposal(uint256 _proposalIndex) public onlyAdmin {
         require(_proposalIndex < proposals.length, "Invalid proposal index");
         require(
-            !proposals[_proposalIndex].hasEnded,
+            !proposals[_proposalIndex].hasAdminEnded,
             "Proposal has already ended"
         );
 
-        proposals[_proposalIndex].hasEnded = true;
-        removeActiveProposalIndex(_proposalIndex);
-        endedProposalIndices.push(_proposalIndex);
-    }
-
-    // Internal function to remove an index from the activeProposalIndices array
-    function removeActiveProposalIndex(uint256 _proposalIndex) internal {
-        for (uint256 i = 0; i < activeProposalIndices.length; i++) {
-            if (activeProposalIndices[i] == _proposalIndex) {
-                activeProposalIndices[i] = activeProposalIndices[
-                    activeProposalIndices.length - 1
-                ];
-                activeProposalIndices.pop();
-                break;
-            }
-        }
-    }
-
-    // Function to get the number of active proposals
-    function getActiveProposalCount() public view returns (uint256) {
-        return activeProposalIndices.length;
-    }
-
-    // Function to get the number of ended proposals
-    function getEndedProposalCount() public view returns (uint256) {
-        return endedProposalIndices.length;
+        proposals[_proposalIndex].hasAdminEnded = true;
     }
 
     // Function to check if an address owns an NFT from AllianzReg contract
@@ -180,10 +142,15 @@ contract AlianzaVoting {
     ) public view returns (bool isActive, bool hasEnded) {
         require(_proposalIndex < proposals.length, "Invalid proposal index");
 
+        // Check if the proposal has ended
+        if (block.timestamp > proposals[_proposalIndex].deadline) {
+            return (false, true); // Proposal has ended
+        }
+
         // Determine if the proposal is active or has ended
         isActive =
-            !proposals[_proposalIndex].hasEnded &&
+            !proposals[_proposalIndex].hasAdminEnded &&
             block.timestamp <= proposals[_proposalIndex].deadline;
-        hasEnded = proposals[_proposalIndex].hasEnded;
+        hasEnded = proposals[_proposalIndex].hasAdminEnded;
     }
 }

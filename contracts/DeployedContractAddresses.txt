@@ -4,7 +4,7 @@ AlianzaReg Contract Address : 0x8428e4ec0FD3E96f56c98229132dac9b62d325df
 Alianza DestinationMinter Address : 0x1142259106e8f31606Ba8785Bd2a5bAB6cd58B08
 Alianza SourceMinter Address's: AVAX fuji : 0x2242cF684DAC41CC45a8B07eF5E027dc28322e49
 
-Alianza Voting contract : 0x333da2047FD464672fC9FF494A98bc6b516b8330
+Alianza Voting contract : 0x1Db45cFDE081F4b0C4991098082CE550C457FCB3
 Alianza destination voting contract : 0xbc23Bf290643bd56117Ce11399e20fbcf7a55941
 Alianza source voting contract : 0x718E76082cAEF0CaF1900e705bdBbc10f541eA91
 
