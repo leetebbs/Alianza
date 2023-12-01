@@ -12,7 +12,7 @@ import "./App.css";
 import "./index.css";
 import Transparency from "./pages/Transparency/Transparency";
 import Incentives from "./pages/Incentives/Incentives";
-
+import Test from "./pages/Test/Test";
 
 const App = () => {
   return (
@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/public-works" element={<PublicWork />} />
         <Route path="/transparency" element={<Transparency />} />
         <Route path="/incentives" element={<Incentives />} />
+        <Route path="/test" element={<Test />} />
       </Routes>
       <Footer />
     </div>
