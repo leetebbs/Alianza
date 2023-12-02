@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -10,7 +11,7 @@ const {
 const { mumbaiNFTRegistrationABI, mumbaiVotingABI } = require("./Utils/Abis");
 const { ethers } = require("ethers");
 const provider = new ethers.providers.JsonRpcProvider(
-  "https://polygon-mumbai-pokt.nodies.app"
+  process.env.ALCHEMY_RPC_API_KEY
 );
 const nftRegestraionContract = new ethers.Contract(
   registrationNFTAddress,
@@ -39,7 +40,7 @@ app.get("/balanceof", async (req, res) => {
   res.send(balance.toString());
   console.log(balance.toString());
 });
-
+//get the proposals(index)
 app.get("/getProposals", async (req, res) => {
   const proposals = await votingContract.proposals(0);
   res.json({
@@ -52,6 +53,27 @@ app.get("/getProposals", async (req, res) => {
   });
   console.log(proposals);
 });
+
+//create a listener for new admins
+async function admins() {
+  const websocketProvider = new ethers.providers.WebSocketProvider(
+    process.env.ALCHEMY_WS_API_KEY
+  );
+  const listenVotingcontract = new ethers.Contract(
+    votingAddress,
+    mumbaiVotingABI,
+    websocketProvider
+  );
+
+  listenVotingcontract.on("AdminCreated", (address, event) => {
+    let newAdminData = {
+      AdminAddress: address,
+      data: event,
+    };
+    console.log(JSON.stringify(newAdminData));
+  });
+}
+admins();
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
