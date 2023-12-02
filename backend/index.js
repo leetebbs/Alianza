@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
-const Proposal = require("./models/Proposals");
+const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
 //Contract information
