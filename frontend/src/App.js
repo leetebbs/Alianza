@@ -13,6 +13,7 @@ import "./index.css";
 import Transparency from "./pages/Transparency/Transparency";
 import Incentives from "./pages/Incentives/Incentives";
 import Test from "./pages/Test/Test";
+import Admin from "./pages/Admin/Admin";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/transparency" element={<Transparency />} />
         <Route path="/incentives" element={<Incentives />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>
