@@ -31,186 +31,242 @@ const ProposalForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-  };
-
-  const InputForm = ({ htmlForLabel, textLabel, typeInput, idInput, nameInput, valueInput, onChangeInput, isTextArea }) => {
-    const InputComponent = isTextArea ? 'textarea' : 'input';
-
-    return (
-      <div className='inputForm'>
-        <label className='inputForm_label' htmlFor={htmlForLabel}>
-          {textLabel}
-        </label>
-        <InputComponent
-          type={typeInput}
-          id={idInput}
-          name={nameInput}
-          value={valueInput}
-          onChange={onChangeInput}
-          required
-        />
-      </div>
-    );
+    setFormData({
+        project_title: '',
+    project_id: '',
+    project_description: '',
+    project_Info: '',
+    constr_company: '',
+    project_status: '',
+    project_benefit: '',
+    project_cost: '',
+    project_env_impact: '',
+    project_progress: '',
+    project_support: '',
+    project_rejection: '',
+    project_location: '',
+    project_image: ''
+    });
   };
 
   return (
     <div className='webapp__proposalForm section__margin'>
       <h1 className='webapp__proposalForm-title'>Create a Proposal</h1>
       <form className='webapp__proposalForm-form' onSubmit={handleSubmit}>
-            <div className='webapp__proposalForm-form_input'>
-            {/* <div className='webapp__proposalForm-section1'> */}
-            {/* Project Title */}
-            <InputForm
-            htmlForLabel={`Project_title`}
-            textLabel={`Project Title:`}
-            typeInput={`text`}
-            idInput={`project_title`}
-            nameInput={`project_title`}
-            valueInput={formData.project_title}
-            onChangeInput={handleChange}
+        <div className='webapp__proposalForm-form_input'>
+          {/* Project Title */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_title'>
+              Project Title:
+            </label>
+            <input
+              type='text'
+              id='project_title'
+              name='project_title'
+              value={formData.project_title}
+              onChange={handleChange}
+              required
             />
-            {/* Project ID */}
-            <InputForm
-            htmlForLabel={`project_id`}
-            textLabel={`Project ID:`}
-            typeInput={`number`}
-            idInput={`project_id`}
-            nameInput={`project_id`}
-            valueInput={formData.project_id}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project ID */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_id'>
+              Project ID:
+            </label>
+            <input
+              type='number'
+              id='project_id'
+              name='project_id'
+              value={formData.project_id}
+              onChange={handleChange}
+              required
             />
-            {/* Project Description */}
-            <InputForm
-            htmlForLabel={`project_description`}
-            textLabel={`Project Description:`}
-            isTextArea={true}
-            idInput={`project_description`}
-            nameInput={`project_description`}
-            valueInput={formData.project_description}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Description */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_description'>
+              Project Description:
+            </label>
+            <textarea
+              id='project_description'
+              name='project_description'
+              value={formData.project_description}
+              onChange={handleChange}
+              required
             />
-            {/* Other input fields */}
-            {/* Project Info */}
-            <InputForm
-            htmlForLabel={`project_Info`}
-            textLabel={`Project Info:`}
-            typeInput={`text`}
-            idInput={`project_Info`}
-            nameInput={`project_Info`}
-            valueInput={formData.project_Info}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Info */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_Info'>
+              Project Info:
+            </label>
+            <input
+              type='text'
+              id='project_Info'
+              name='project_Info'
+              value={formData.project_Info}
+              onChange={handleChange}
+              required
             />
-            {/* Construction Company */}
-            <InputForm
-            htmlForLabel={`constr_company`}
-            textLabel={`Construction Company:`}
-            typeInput={`text`}
-            idInput={`constr_company`}
-            nameInput={`constr_company`}
-            valueInput={formData.constr_company}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Construction Company */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='constr_company'>
+              Construction Company:
+            </label>
+            <input
+              type='text'
+              id='constr_company'
+              name='constr_company'
+              value={formData.constr_company}
+              onChange={handleChange}
+              required
             />
-            
-            
-            {/* Project Status */}
-            <InputForm
-            htmlForLabel={`project_status`}
-            textLabel={`Project Status:`}
-            typeInput={`text`}
-            idInput={`project_status`}
-            nameInput={`project_status`}
-            valueInput={formData.project_status}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Status */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_status'>
+              Project Status:
+            </label>
+            <input
+              type='text'
+              id='project_status'
+              name='project_status'
+              value={formData.project_status}
+              onChange={handleChange}
+              required
             />
-            {/* </div> */}
-            {/* <div className='webapp__proposalForm-section2'> */}
-            {/* Project Benefit */}
-            <InputForm
-            htmlForLabel={`project_benefit`}
-            textLabel={`Project Benefit:`}
-            typeInput={`text`}
-            idInput={`project_benefit`}
-            nameInput={`project_benefit`}
-            valueInput={formData.project_benefit}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Benefit */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_benefit'>
+              Project Benefit:
+            </label>
+            <input
+              type='text'
+              id='project_benefit'
+              name='project_benefit'
+              value={formData.project_benefit}
+              onChange={handleChange}
+              required
             />
-            {/* Project Cost */}
-            <InputForm
-            htmlForLabel={`project_cost`}
-            textLabel={`Project Cost:`}
-            typeInput={`number`}
-            idInput={`project_cost`}
-            nameInput={`project_cost`}
-            valueInput={formData.project_cost}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Cost */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_cost'>
+              Project Cost:
+            </label>
+            <input
+              type='number'
+              id='project_cost'
+              name='project_cost'
+              value={formData.project_cost}
+              onChange={handleChange}
+              required
             />
-            {/* Project Environmental Impact */}
-            <InputForm
-            htmlForLabel={`project_env_impact`}
-            textLabel={`Project Environmental Impact:`}
-            typeInput={`text`}
-            idInput={`project_env_impact`}
-            nameInput={`project_env_impact`}
-            valueInput={formData.project_env_impact}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Environmental Impact */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_env_impact'>
+              Project Environmental Impact:
+            </label>
+            <input
+              type='text'
+              id='project_env_impact'
+              name='project_env_impact'
+              value={formData.project_env_impact}
+              onChange={handleChange}
+              required
             />
-            {/* Project Progress */}
-            <InputForm
-            htmlForLabel={`project_progress`}
-            textLabel={`Project Progress:`}
-            typeInput={`number`}
-            idInput={`project_progress`}
-            nameInput={`project_progress`}
-            valueInput={formData.project_progress}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Progress */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_progress'>
+              Project Progress:
+            </label>
+            <input
+              type='number'
+              id='project_progress'
+              name='project_progress'
+              value={formData.project_progress}
+              onChange={handleChange}
+              required
             />
-            {/* Project Support */}
-            <InputForm
-            htmlForLabel={`project_support`}
-            textLabel={`Project Support:`}
-            typeInput={`number`}
-            idInput={`project_support`}
-            nameInput={`project_support`}
-            valueInput={formData.project_support}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Support */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_support'>
+              Project Support:
+            </label>
+            <input
+              type='number'
+              id='project_support'
+              name='project_support'
+              value={formData.project_support}
+              onChange={handleChange}
+              required
             />
-            {/* Project Rejection */}
-            <InputForm
-            htmlForLabel={`project_rejection`}
-            textLabel={`Project Rejection:`}
-            typeInput={`number`}
-            idInput={`project_rejection`}
-            nameInput={`project_rejection`}
-            valueInput={formData.project_rejection}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Rejection */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_rejection'>
+              Project Rejection:
+            </label>
+            <input
+              type='number'
+              id='project_rejection'
+              name='project_rejection'
+              value={formData.project_rejection}
+              onChange={handleChange}
+              required
             />
-            {/* Project Location */}
-            <InputForm
-            htmlForLabel={`project_location`}
-            textLabel={`Project Location:`}
-            typeInput={`text`}
-            idInput={`project_location`}
-            nameInput={`project_location`}
-            valueInput={formData.project_location}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Location */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_location'>
+              Project Location:
+            </label>
+            <input
+              type='text'
+              id='project_location'
+              name='project_location'
+              value={formData.project_location}
+              onChange={handleChange}
+              required
             />
-            {/* Project Image */}
-            <InputForm
-            htmlForLabel={`project_image`}
-            textLabel={`Project Image URL:`}
-            typeInput={`file`}
-            idInput={`project_image`}
-            nameInput={`project_image`}
-            valueInput={formData.project_image}
-            onChangeInput={handleChange}
+          </div>
+
+          {/* Project Image */}
+          <div className='inputForm'>
+            <label className='inputForm_label' htmlFor='project_image'>
+              Project Image URL:
+            </label>
+            <input
+              type='file'
+              id='project_image'
+              name='project_image'
+              onChange={handleChange}
+              required
             />
-            {/* </div> */}
-            
-            {/* Submit Button */}
-            <div className='webapp__proposalForm-btn'>
-            <button type="submit">Submit Proposal</button>
-            </div>
-            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className='webapp__proposalForm-btn'>
+            <button type='submit'>Submit Proposal</button>
+          </div>
+        </div>
       </form>
     </div>
   );

@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin: 0 1rem;
 
 }
 .webapp__proposalForm-form_input {
@@ -60,9 +61,30 @@
 }
 input, textarea {
     box-sizing: border-box;
+    height: 20px;
     padding: 0;
     margin: 0;
-  }
+    font-family: var(--font-family);
+    font-size: 18px;
+
+}
+textarea {
+    height: 60px;
+}
+/* Style the file input */
+input[type="file"] {
+    color: var(--color-text);
+    background: var(--color-gray);
+    padding: 10px;
+    height: 45px;
+    margin-left: -60px;
+    border-radius: 5px;
+}
+  
+input[type="file"]:hover {
+    cursor: pointer;
+    border: 2px solid var(--color-golden)
+}
 .webapp__proposalForm-btn {
     flex-wrap: nowrap;
     display: flex;
