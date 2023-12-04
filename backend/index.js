@@ -6,6 +6,19 @@ const mongoose = require("mongoose");
 const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
+// Connection to MongoDB using Mongoose
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+  console.log("Connected to MongoDB");
+});
+
 //Contract information
 const {
   registrationNFTAddress,
@@ -16,6 +29,7 @@ const { ethers } = require("ethers");
 const provider = new ethers.providers.JsonRpcProvider(
   process.env.ALCHEMY_RPC_API_KEY
 );
+
 const nftRegestraionContract = new ethers.Contract(
   registrationNFTAddress,
   mumbaiNFTRegistrationABI,
@@ -59,22 +73,43 @@ app.get("/", (req, res) => {
 
 //get the balance of an nftowner
 app.get("/balanceof", async (req, res) => {
-  const balance = await nftRegestraionContract.balanceOf(address);
-  res.send(balance.toString());
-  console.log(balance.toString());
+  try {
+    const balance = await nftRegistrationContract.balanceOf(address);
+    res.send(balance.toString());
+    console.log(balance.toString());
+  } catch (error) {
+    console.error("Error getting balance of NFT owner:", error);
+    res.status(500).json({ error: "Failed to get NFT balance" });
+  }
 });
+
 //get the proposals(index)
 app.get("/getProposals", async (req, res) => {
-  const proposals = await votingContract.proposals(0);
-  res.json({
-    name: proposals.name,
-    scope: proposals.scope,
-    forVotes: proposals.forVotes.toString(),
-    againstVotes: proposals.againstVotes.toString(),
-    deadline: proposals.deadline.toString(),
-    hasAdminEnded: proposals.hasAdminEnded,
-  });
-  console.log(proposals);
+  try {
+    const proposals = await votingContract.proposals(0);
+    res.json({
+      name: proposals.name,
+      scope: proposals.scope,
+      forVotes: proposals.forVotes.toString(),
+      againstVotes: proposals.againstVotes.toString(),
+      deadline: proposals.deadline.toString(),
+      hasAdminEnded: proposals.hasAdminEnded,
+    });
+    console.log(proposals);
+  } catch (error) {
+    console.error("Error getting proposals:", error);
+    res.status(500).json({ error: "Failed to get proposals" });
+  }
+});
+
+//Creating a listener for NFT minting
+nftRegistrationContract.on("NFTMinted", (owner, tokenId, event) => {
+  let newMintedNFTData = {
+    Owner: owner,
+    TokenId: tokenId,
+    Data: event,
+  };
+  console.log(JSON.stringify(newMintedNFTData));
 });
 
 //create a listener for new admins
