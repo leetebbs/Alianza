@@ -6,7 +6,7 @@ import image from "../../constants/images";
 import "./Navbar.css";
 // RainbowKit
 import { useAccount } from "wagmi";
-import useWalletVerification from "../../Utils/useRainbowKit";
+import useWalletVerification from "../../Utils/UserWalletVerification";
 import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // SubMenu
