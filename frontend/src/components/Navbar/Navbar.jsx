@@ -1,9 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 import image from "../../constants/images";
 import "./Navbar.css";
+// RainbowKit
+import { useAccount } from "wagmi";
+import useWalletVerification from "../../Utils/UserWalletVerification";
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
@@ -14,6 +18,20 @@ const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
   </>
 );
 const Navbar = () => {
+  // Check wallet number
+  const account = useAccount();
+  const { openConnectModal } = useConnectModal();
+  const { verifyWalletInDatabase } = useWalletVerification();
+
+  useEffect(() => {
+    if (account.isConnected) {
+      console.log(account.address);
+      verifyWalletInDatabase(account.address);
+    }
+  }, [account, verifyWalletInDatabase]);
+    
+   
+  
   // NAVBAR menu options
   const Menu = () => (
     <>
