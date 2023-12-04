@@ -6,6 +6,8 @@ import image from "../../constants/images";
 import "./Navbar.css";
 // RainbowKit
 import { useAccount } from "wagmi";
+import useWalletVerification from "../../Utils/useRainbowKit";
+import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
@@ -18,11 +20,15 @@ const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
 const Navbar = () => {
   // Check wallet number
   const account = useAccount();
+  const { openConnectModal } = useConnectModal();
+  const { verifyWalletInDatabase } = useWalletVerification();
+
   useEffect(() => {
     if (account.isConnected) {
       console.log(account.address);
+      verifyWalletInDatabase(account.address);
     }
-  }, [account]);  
+  }, [account, verifyWalletInDatabase]);
     
    
   
