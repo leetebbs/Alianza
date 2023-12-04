@@ -30,7 +30,7 @@ const provider = new ethers.providers.JsonRpcProvider(
   process.env.ALCHEMY_RPC_API_KEY
 );
 
-const nftRegestraionContract = new ethers.Contract(
+const nftRegistrationContract = new ethers.Contract(
   registrationNFTAddress,
   mumbaiNFTRegistrationABI,
   provider
