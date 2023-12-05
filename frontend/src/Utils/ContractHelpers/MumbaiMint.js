@@ -42,11 +42,6 @@ export function MumbaiMintNFT() {
           </div>
         </div>
       )}
-      <div className="error">
-        {(isPrepareError || isError) && (
-          <div>Error: {(prepareError || error)?.message}</div>
-        )}
-      </div>
     </div>
   );
 }

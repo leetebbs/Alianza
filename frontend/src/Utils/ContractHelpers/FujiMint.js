@@ -1,5 +1,6 @@
 import { avaxFujiNFTRegistrationABI } from "../Abis";
 import { avaxFujiNFTMintingAddress } from "../ContractsAddresses";
+
 import {
   useWaitForTransaction,
   useContractWrite,
