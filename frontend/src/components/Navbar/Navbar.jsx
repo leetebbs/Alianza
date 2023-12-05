@@ -7,7 +7,7 @@ import "./Navbar.css";
 // RainbowKit
 import { useAccount } from "wagmi";
 import useWalletVerification from "../../Utils/UserWalletVerification";
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
@@ -29,9 +29,7 @@ const Navbar = () => {
       verifyWalletInDatabase(account.address);
     }
   }, [account, verifyWalletInDatabase]);
-    
-   
-  
+
   // NAVBAR menu options
   const Menu = () => (
     <>
