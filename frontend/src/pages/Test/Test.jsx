@@ -44,7 +44,7 @@ const Test = () => {
     }
     checkChain();
     // console.log(isHolder);
-  }, [chain, isHolder]);
+  }, [chain]);
 
   return (
     <div className="test-container">
