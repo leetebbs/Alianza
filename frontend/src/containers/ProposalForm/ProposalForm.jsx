@@ -37,45 +37,97 @@ const ProposalForm = () => {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  // console.log("Form submitted:", formData);
+  //create proposal in contract here and await tx hash then add this to the json and send to the server
+  // function createAProposal(
+  //   string memory _proposalName,
+  //   string memory _proposalScope,
+  //   uint256 _duration // duration of the proposal voting period in seconds ******** add to form ***********77
+
+  //function createProposal(
+  //   formData.project_title,
+  //   formData.project_description,
+  //   formData.project_voting_duration
+  // )
+
+  // const data = await axios.post(`${serverURL}/createProposal`, formData);
+  // axios.post(`${serverURL}/createProposal`, formData, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // });
+
+  // setFormData({
+  //   project_title: "",
+  //   project_id: "",
+  //   project_description: "",
+  //   project_Info: "",
+  //   constr_company: "",
+  //   project_status: "",
+  //   project_benefit: "",
+  //   project_cost: "",
+  //   project_env_impact: "",
+  //   project_progress: "",
+  //   project_support: "",
+  //   project_rejection: "",
+  //   project_location: "",
+  //   project_image: "",
+  //   project_voting_duration: "",
+  // });
+  // };
+
+  const testData = {
+    projectID: 1,
+    projectName: "Project 1",
+    projectDescription: "This is project 1",
+    projectInfo: "This is project 1 info",
+    constrCompany: "Company 1",
+    projectStatus: "Active",
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
-    //create proposal in contract here and await tx hash then add this to the json and send to the server
-    // function createAProposal(
-    //   string memory _proposalName,
-    //   string memory _proposalScope,
-    //   uint256 _duration // duration of the proposal voting period in seconds ******** add to form ***********77
+    console.log("Form submitted:", formData);
+    try {
+      // Send the form data as JSON
+      const response = await axios.post(
+        `${serverURL}/createProposal`,
+        testData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    //function createProposal(
-    //   formData.project_title,
-    //   formData.project_description,
-    //   formData.project_voting_duration
-    // )
+      // Handle the response data (if needed)
+      console.log("Response from server:", response.data);
 
-    // const data = await axios.post(`${serverURL}/createProposal`, formData);
-    axios.post(`${serverURL}/createProposal`, formData, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    // setFormData({
-    //   project_title: "",
-    //   project_id: "",
-    //   project_description: "",
-    //   project_Info: "",
-    //   constr_company: "",
-    //   project_status: "",
-    //   project_benefit: "",
-    //   project_cost: "",
-    //   project_env_impact: "",
-    //   project_progress: "",
-    //   project_support: "",
-    //   project_rejection: "",
-    //   project_location: "",
-    //   project_image: "",
-    //   project_voting_duration: "",
-    // });
+      // Reset the form data if the request is successful
+      setFormData({
+        project_title: "",
+        project_id: "",
+        project_description: "",
+        project_Info: "",
+        constr_company: "",
+        project_status: "",
+        project_benefit: "",
+        project_cost: "",
+        project_env_impact: "",
+        project_progress: "",
+        project_support: "",
+        project_rejection: "",
+        project_location: "",
+        project_image: "",
+        project_voting_duration: "",
+      });
+    } catch (error) {
+      // Handle errors
+      console.error("Error creating proposal:", error);
+      // You might want to show an error message to the user
+    }
   };
 
   return (

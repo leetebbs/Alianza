@@ -116,7 +116,10 @@ app.get("/getProposals", async (req, res) => {
 });
 
 app.options("/createProposal", cors(corsOptions));
-app.post("/createProposal", async (req, res) => {
+app.post("/createProposal", cors(corsOptions), async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "POST");
   try {
     const data = req.body;
     // create a proposal on the smart contract from the frontend and await the response then push data to here
