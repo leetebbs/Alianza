@@ -35,18 +35,23 @@ const ProposalForm = () => {
       ...prevData,
       [name]: value,
     }));
+    console.log("Form data changed:", formData);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     try {
       // Send the form data as JSON
-      const response = axios.post(`${serverURL}/createProposal`, formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        `${serverURL}/createProposal`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       // Handle the response data (if needed)
       console.log("Response from server:", response.data);

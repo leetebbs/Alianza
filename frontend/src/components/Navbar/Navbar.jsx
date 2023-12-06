@@ -7,10 +7,10 @@ import "./Navbar.css";
 // RainbowKit
 import { useAccount } from "wagmi";
 import useWalletVerification from "../../Utils/UserWalletVerification";
-import { useConnectModal,  useAccountModal } from "@rainbow-me/rainbowkit";
+import { useConnectModal, useAccountModal } from "@rainbow-me/rainbowkit";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 // MODAL
-import UserRegistrationModal from '../UserRegistrationModal/UserRegistrationModal';
+import UserRegistrationModal from "../UserRegistrationModal/UserRegistrationModal";
 
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
@@ -32,7 +32,9 @@ const Navbar = () => {
     const checkWalletInDatabase = async () => {
       if (account.isConnected) {
         console.log(account.address);
-        const isWalletInDatabase = await verifyWalletInDatabase(account.address);
+        const isWalletInDatabase = await verifyWalletInDatabase(
+          account.address
+        );
 
         if (!isWalletInDatabase) {
           setShowModalRegistration(true);
@@ -44,9 +46,9 @@ const Navbar = () => {
   }, [account, verifyWalletInDatabase]);
 
   const handleCloseRegistrationModal = () => {
-    console.log('Closing registration modal');
+    console.log("Closing registration modal");
     setShowModalRegistration(false);
-  }
+  };
 
   // NAVBAR menu options
   const Menu = () => (
@@ -164,11 +166,8 @@ const Navbar = () => {
         <button type="button">
           <Link to="/signup">Sign up</Link>
         </button> */}
-        
-        <ConnectButton
-                  label="Connect"
-                  accountStatus={'avatar'}
-        />
+
+        <ConnectButton label="Connect" accountStatus={"avatar"} />
       </div>
       <div className="webapp__navbar-menu">
         {toggleMenu ? (
@@ -195,10 +194,7 @@ const Navbar = () => {
                 <button type="button">
                   <Link to="/signup">Sign up</Link>
                 </button> */}
-                <ConnectButton
-                  label="Connect"
-                  accountStatus={'avatar'}
-                />
+                <ConnectButton label="Connect" accountStatus={"avatar"} />
               </div>
             </div>
           </div>
