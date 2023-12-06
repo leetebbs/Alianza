@@ -78,15 +78,6 @@ const ProposalForm = () => {
   // });
   // };
 
-  const testData = {
-    projectID: 1,
-    projectName: "Project 1",
-    projectDescription: "This is project 1",
-    projectInfo: "This is project 1 info",
-    constrCompany: "Company 1",
-    projectStatus: "Active",
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
@@ -94,7 +85,7 @@ const ProposalForm = () => {
       // Send the form data as JSON
       const response = await axios.post(
         `${serverURL}/createProposal`,
-        testData,
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
