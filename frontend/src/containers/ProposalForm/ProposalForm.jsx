@@ -8,8 +8,8 @@ import { votingAddress } from "../../Utils/ContractsAddresses";
 // fetch the number of propoals so can use as project id for new proposal in db +1
 //create a new proposal in the smart contract and await the tx hash then add this to the json and send to the server
 
-const serverURL = "http://localhost:5000";
-// const serverURL = "https://alianza-hazel.vercel.app";
+// const serverURL = "http://localhost:5000";
+const serverURL = "https://alianza-hazel.vercel.app";
 const ProposalForm = () => {
   const [formData, setFormData] = useState({
     project_title: "",
