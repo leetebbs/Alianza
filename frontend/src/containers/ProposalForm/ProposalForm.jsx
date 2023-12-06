@@ -52,7 +52,16 @@ const ProposalForm = () => {
     //   formData.project_voting_duration
     // )
 
-    const data = await axios.post(`${serverURL}/createProposal`, formData);
+    // const data = await axios.post(`${serverURL}/createProposal`, formData);
+    const data = await axios.post(
+      "https://alianza-hazel.vercel.app/createProposal",
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     setFormData({
       project_title: "",
