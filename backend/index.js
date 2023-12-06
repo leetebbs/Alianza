@@ -86,8 +86,12 @@ app.get("/balanceof", async (req, res) => {
 //get the proposals(index)
 app.get("/getProposals", async (req, res) => {
   try {
+    const numberOfProposals =
+      await votingContract.totalNumberOfProposalsCreated();
+    console.log("numberOfProposals", numberOfProposals.toString());
     const proposals = await votingContract.proposals(0);
     res.json({
+      numberOfProposals: numberOfProposals.toString(),
       name: proposals.name,
       scope: proposals.scope,
       forVotes: proposals.forVotes.toString(),
@@ -100,6 +104,13 @@ app.get("/getProposals", async (req, res) => {
     console.error("Error getting proposals:", error);
     res.status(500).json({ error: "Failed to get proposals" });
   }
+});
+
+app.post("/createProposal", async (req, res) => {
+  const data = req.body;
+  // create a proposal on the smart contract from the frontend and await the response then push data to here
+  console.log(data);
+  res.send(data);
 });
 
 //Creating a listener for NFT minting
@@ -128,6 +139,7 @@ async function admins() {
       AdminAddress: address,
       data: event,
     };
+
     console.log(JSON.stringify(newAdminData));
   });
 }
