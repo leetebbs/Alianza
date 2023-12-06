@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
+app.use(cors());
+app.use(express.json());
+
 // Connection to MongoDB using Mongoose
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
@@ -41,9 +44,6 @@ const votingContract = new ethers.Contract(
   mumbaiVotingABI,
   provider
 );
-
-app.use(cors());
-app.use(express.json());
 
 //test address
 const address = "0xBF3F821E4eE0cE0CDEce7d3141B7998769ffbFa6";
