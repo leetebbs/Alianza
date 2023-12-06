@@ -106,7 +106,7 @@ app.get("/getProposals", async (req, res) => {
   }
 });
 
-app.post("/createProposal", async (req, res) => {
+app.post("/createProposal", cors(), async (req, res) => {
   const data = req.body;
   // create a proposal on the smart contract from the frontend and await the response then push data to here
   console.log(data);
