@@ -5,18 +5,16 @@ import { useState } from "react";
 const useWalletVerification = () => {
   const { openAccountModal } = useAccountModal();
   const [isWalletRegistered, setIsWalletRegistered] = useState(false);
-  const verifyWalletInDatabase = async (walletAddress) => {
-    if (walletAddress === "0xB18324EB69a839DD4f0748925bc021B2f8c0290e"){
-      return true
-    }
-    // Implement logic to verify wallet in the database
 
-    //@cisco this does not fetch the data from the database as i like you cannot get access to the database maybe @eik can help?
-    //I have queried the nft reg data from the contract using alchemy sdk.
+  const verifyWalletInDatabase = async (walletAddress) => {
+    // if (walletAddress === "0xB18324EB69a839DD4f0748925bc021B2f8c0290e"){
+    //   return true
+    // }
 
     // const isWalletRegistered = true; // Replace with your logic
 
     // using alchemy to fetch if the wallet is registered
+
     const options = { method: "GET", headers: { accept: "application/json" } };
 
     fetch(

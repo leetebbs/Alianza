@@ -2,7 +2,7 @@ import React from "react";
 import "./ProposalForm.css";
 import { useState } from "react";
 import axios from "axios";
-import { votingAddress } from "../../Utils/ContractsAddresses";
+import { CreateAProposal } from "../../Utils/ContractHelpers/CreateProposal";
 
 // check to see if the wallet is an admin address and only render form if is admin
 // fetch the number of propoals so can use as project id for new proposal in db +1
@@ -41,6 +41,7 @@ const ProposalForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+
     try {
       // Send the form data as JSON
       const response = await axios.post(
@@ -313,6 +314,11 @@ const ProposalForm = () => {
           </div>
         </div>
       </form>
+      <CreateAProposal
+        title={formData.project_title}
+        description={formData.project_description}
+        duration={formData.project_voting_duration}
+      />
     </div>
   );
 };
