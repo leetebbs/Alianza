@@ -106,11 +106,16 @@ app.get("/getProposals", async (req, res) => {
   }
 });
 
-app.post("/createProposal", cors(), async (req, res) => {
-  const data = req.body;
-  // create a proposal on the smart contract from the frontend and await the response then push data to here
-  console.log(data);
-  res.send(req.body);
+app.post("/createProposal", async (req, res) => {
+  try {
+    const data = req.body;
+    // create a proposal on the smart contract from the frontend and await the response then push data to here
+    console.log(data);
+    res.json({ status: "success", data: req.body });
+  } catch (error) {
+    console.error("Error creating proposal:", error);
+    res.status(500).json({ error: "Failed to create proposal" });
+  }
 });
 
 //Creating a listener for NFT minting
