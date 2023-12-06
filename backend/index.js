@@ -6,7 +6,16 @@ const mongoose = require("mongoose");
 const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
+// app.use(cors());
 app.use(express.json());
 
 // Connection to MongoDB using Mongoose
@@ -106,6 +115,7 @@ app.get("/getProposals", async (req, res) => {
   }
 });
 
+app.options("/createProposal", cors(corsOptions));
 app.post("/createProposal", async (req, res) => {
   try {
     const data = req.body;

@@ -8,8 +8,8 @@ import { votingAddress } from "../../Utils/ContractsAddresses";
 // fetch the number of propoals so can use as project id for new proposal in db +1
 //create a new proposal in the smart contract and await the tx hash then add this to the json and send to the server
 
-// const serverURL = "http://localhost:5000";
-const serverURL = "https://alianza-hazel.vercel.app";
+const serverURL = "http://localhost:5000";
+// const serverURL = "https://alianza-hazel.vercel.app";
 const ProposalForm = () => {
   const [formData, setFormData] = useState({
     project_title: "",
@@ -39,7 +39,7 @@ const ProposalForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
     //create proposal in contract here and await tx hash then add this to the json and send to the server
     // function createAProposal(
     //   string memory _proposalName,
@@ -53,33 +53,29 @@ const ProposalForm = () => {
     // )
 
     // const data = await axios.post(`${serverURL}/createProposal`, formData);
-    const data = await axios.post(
-      "https://alianza-hazel.vercel.app/createProposal",
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    setFormData({
-      project_title: "",
-      project_id: "",
-      project_description: "",
-      project_Info: "",
-      constr_company: "",
-      project_status: "",
-      project_benefit: "",
-      project_cost: "",
-      project_env_impact: "",
-      project_progress: "",
-      project_support: "",
-      project_rejection: "",
-      project_location: "",
-      project_image: "",
-      project_voting_duration: "",
+    axios.post(`${serverURL}/createProposal`, formData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+
+    // setFormData({
+    //   project_title: "",
+    //   project_id: "",
+    //   project_description: "",
+    //   project_Info: "",
+    //   constr_company: "",
+    //   project_status: "",
+    //   project_benefit: "",
+    //   project_cost: "",
+    //   project_env_impact: "",
+    //   project_progress: "",
+    //   project_support: "",
+    //   project_rejection: "",
+    //   project_location: "",
+    //   project_image: "",
+    //   project_voting_duration: "",
+    // });
   };
 
   return (
