@@ -7,8 +7,11 @@ import "./Navbar.css";
 // RainbowKit
 import { useAccount } from "wagmi";
 import useWalletVerification from "../../Utils/UserWalletVerification";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { useConnectModal,  useAccountModal } from "@rainbow-me/rainbowkit";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+// MODAL
+import UserRegistrationModal from '../UserRegistrationModal/UserRegistrationModal';
+
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
   <>
@@ -20,15 +23,30 @@ const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
 const Navbar = () => {
   // Check wallet number
   const account = useAccount();
-  const { openConnectModal } = useConnectModal();
+  // const { openConnectModal } = useConnectModal();
+  // const { openAccountModal } = useAccountModal();
   const { verifyWalletInDatabase } = useWalletVerification();
+  const [showModalRegistration, setShowModalRegistration] = useState(false);
 
   useEffect(() => {
-    if (account.isConnected) {
-      console.log(account.address);
-      verifyWalletInDatabase(account.address);
-    }
+    const checkWalletInDatabase = async () => {
+      if (account.isConnected) {
+        console.log(account.address);
+        const isWalletInDatabase = await verifyWalletInDatabase(account.address);
+
+        if (!isWalletInDatabase) {
+          setShowModalRegistration(true);
+        }
+      }
+    };
+
+    checkWalletInDatabase();
   }, [account, verifyWalletInDatabase]);
+
+  const handleCloseRegistrationModal = () => {
+    console.log('Closing registration modal');
+    setShowModalRegistration(false);
+  }
 
   // NAVBAR menu options
   const Menu = () => (
@@ -134,18 +152,23 @@ const Navbar = () => {
         <div className="webapp__navbar-links-logo">
           <img src={image.logoAlianza} alt="logo" />
         </div>
-        <ConnectButton />
+        {/* <ConnectButton /> */}
         <div className="webapp__navbar-links_container">
           <Menu />
         </div>
       </div>
       <div className="webapp__navbar-sign">
-        <p>
+        {/* <p>
           <Link to="/login">Login</Link>
         </p>
         <button type="button">
           <Link to="/signup">Sign up</Link>
-        </button>
+        </button> */}
+        
+        <ConnectButton
+                  label="Connect"
+                  accountStatus={'avatar'}
+        />
       </div>
       <div className="webapp__navbar-menu">
         {toggleMenu ? (
@@ -166,17 +189,37 @@ const Navbar = () => {
             <div className="webapp__navbar-menu_container-links">
               <Menu />
               <div className="webapp__navbar-menu_container-links-sign">
-                <p>
+                {/* <p>
                   <Link to="/login">Login</Link>
                 </p>
                 <button type="button">
                   <Link to="/signup">Sign up</Link>
-                </button>
+                </button> */}
+                <ConnectButton
+                  label="Connect"
+                  accountStatus={'avatar'}
+                />
               </div>
             </div>
           </div>
         )}
       </div>
+      {/* {openConnectModal && (
+        <button onClick={openConnectModal} type="button">
+          Open Connect Modal
+        </button>
+      )}
+      {/* Example button to open Account Modal */}
+      {/* {openAccountModal && (
+        <button onClick={openAccountModal} type="button">
+          Open Account Modal
+        </button>
+      )} } */}
+      <UserRegistrationModal
+        show={showModalRegistration}
+        handleClose={handleCloseRegistrationModal}
+        walletAddress={account.address}
+      />
     </div>
   );
 };
