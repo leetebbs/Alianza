@@ -94,7 +94,7 @@ const ProposalForm = () => {
       // Send the form data as JSON
       const response = await axios.post(
         `${serverURL}/createProposal`,
-        testData,
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
