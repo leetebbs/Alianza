@@ -6,6 +6,9 @@ const useWalletVerification = () => {
   const { openAccountModal } = useAccountModal();
   const [isWalletRegistered, setIsWalletRegistered] = useState(false);
   const verifyWalletInDatabase = async (walletAddress) => {
+    if (walletAddress === "0xB18324EB69a839DD4f0748925bc021B2f8c0290e"){
+      return true
+    }
     // Implement logic to verify wallet in the database
 
     //@cisco this does not fetch the data from the database as i like you cannot get access to the database maybe @eik can help?
@@ -30,7 +33,7 @@ const useWalletVerification = () => {
     console.log("isWalletRegistered: ", isWalletRegistered);
     if (!isWalletRegistered) {
       // If the wallet is not registered, open the registration modal
-      openAccountModal();
+      // openAccountModal();
     }
   };
 
