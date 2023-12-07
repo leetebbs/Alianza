@@ -36,7 +36,7 @@ const Navbar = () => {
           account.address
         );
 
-        if (!isWalletInDatabase) {
+        if (isWalletInDatabase) {
           setShowModalRegistration(true);
         }
       }

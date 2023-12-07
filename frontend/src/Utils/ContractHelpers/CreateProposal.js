@@ -1,20 +1,16 @@
+// CreateAProposal.js
+
+import React from "react";
 import { votingAddress } from "../../Utils/ContractsAddresses";
 import { mumbaiVotingABI } from "../../Utils/Abis";
 import {
   useWaitForTransaction,
   useContractWrite,
-  useAccount,
   usePrepareContractWrite,
 } from "wagmi";
 
 export function CreateAProposal({ title, description, duration }) {
-  const account = useAccount();
-
-  const {
-    config,
-    error: prepareError,
-    isError: isPrepareError,
-  } = usePrepareContractWrite({
+  const { config, error: prepareError } = usePrepareContractWrite({
     address: votingAddress,
     abi: mumbaiVotingABI,
     functionName: "createAProposal",
@@ -27,10 +23,28 @@ export function CreateAProposal({ title, description, duration }) {
     hash: data?.hash,
   });
 
+  const handleButtonClick = async () => {
+    try {
+      // Trigger the contract write operation
+      await write();
+    } catch (writeError) {
+      console.error("Error during contract write:", writeError);
+      // Notify the parent component about the error
+      //   onError(writeError);
+    }
+  };
+
+  // Notify the parent component about the success
+  React.useEffect(() => {
+    if (isSuccess) {
+      //   onSuccess();
+    }
+  }, [isSuccess]);
+
   return (
     <div>
-      <button disabled={!write || isLoading} onClick={() => write()}>
-        {isLoading ? "Creating..." : "create A Proposal"}
+      <button disabled={!write || isLoading} onClick={handleButtonClick}>
+        {isLoading ? "Creating..." : "Create A Proposal"}
       </button>
       {isSuccess && (
         <div>
@@ -40,6 +54,12 @@ export function CreateAProposal({ title, description, duration }) {
               MumbaiScan
             </a>
           </div>
+        </div>
+      )}
+      {isError && (
+        <div>
+          Error: {error.message}
+          {/* Display more error details if needed */}
         </div>
       )}
     </div>
