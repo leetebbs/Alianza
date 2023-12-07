@@ -11,8 +11,8 @@ import {
   useAccount,
 } from "wagmi";
 
-const serverURL = "http://localhost:3000";
-// const serverURL = "https://alianza-hazel.vercel.app";
+// const serverURL = "http://localhost:3000";
+const serverURL = "https://alianza-hazel.vercel.app";
 
 const ProposalForm = () => {
   const [isAdmin, setIsAdmin] = useState(false);
