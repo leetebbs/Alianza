@@ -121,7 +121,6 @@ app.post("/createProposal", cors(corsOptions), async (req, res) => {
   res.header("Access-Control-Allow-Methods", "POST");
   try {
     const data = req.body;
-    // create a proposal on the smart contract from the frontend and await the response then push data to here
     console.log(data);
     res.json({ status: "success", data: req.body });
   } catch (error) {
@@ -161,6 +160,32 @@ async function admins() {
   });
 }
 admins();
+//Listener to listen to when a vote is cast
+async function votes() {
+  const websocketProvider = new ethers.providers.WebSocketProvider(
+    process.env.ALCHEMY_WS_API_KEY
+  );
+  const listenVotingcontract = new ethers.Contract(
+    votingAddress,
+    mumbaiVotingABI,
+    websocketProvider
+  );
+
+  listenVotingcontract.on(
+    "VoteCast",
+    (address, proposalIndex, inSupport, event) => {
+      let voteData = {
+        VoterAddress: address,
+        ProposalIndex: proposalIndex,
+        InSupport: inSupport,
+        data: event,
+      };
+
+      console.log(JSON.stringify(voteData));
+    }
+  );
+}
+votes();
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
