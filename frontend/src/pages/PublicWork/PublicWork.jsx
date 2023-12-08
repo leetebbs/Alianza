@@ -5,6 +5,11 @@ import { Cta } from '../../components'
 import BtnLink from '../../components/BtnLink/BtnLink'
 import PublicWorkSection from '../../containers/PublicWorkSection/PublicWorkSection'
 import PublicWorkList from '../../components/PublicWorkList/PublicWorkList'
+// New
+import ProjectSection from '../../containers/ProjectSection/ProjectSection'
+import ProjectCard from '../../components/ProjectCard/ProjectCard'
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+// Fake DB
 import fakePublicWorksData from '../../data/fakeDataOnPW'
 console.log(fakePublicWorksData);
 const PublicWork = () => {
