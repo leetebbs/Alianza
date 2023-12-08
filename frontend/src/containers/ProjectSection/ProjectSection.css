@@ -1,0 +1,115 @@
+/* ProjectSection.css */
+.webapp__PS {
+    display: flex;
+    flex-direction: column;
+    /* padding: 2rem; */
+    background: var(--color-footer);
+        
+    /* ff 3.6+ */
+    background:-moz-radial-gradient(circle at 30% -100%, #000 25%, #383e3e 85%, #FFF 100%);
+    
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 30% -100%, #000 25%, #383e3e 85%, #FFF 100%);
+    
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 30% -100%, #000 25%, #383e3e 85%, #FFF 100%);
+    
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 30% -100%, #000 25%, #383e3e 85%, #FFF 100%);
+    
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 30% -100%, #000 25%, #383e3e 85%, #FFF 100%);
+    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    
+    border: 2px solid  var(--color-golden);
+
+  }
+  
+  .webapp__PS-container {
+    display: flex;
+    justify-content: center ;/*space-between;*/
+    align-items: center;  /*stretch;*/
+    margin:1.5rem 0;
+    
+  }
+
+  .webapp__PS-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2.5rem ;
+  }
+  .webapp__PS-heading h2 {
+    font-size: 54px;
+    line-height: 65px;
+    font-weight: 800;
+    
+    font-family: var(--font-family);
+}
+  
+  .webapp__PS-info,
+  .webapp__PS-grid {
+    /* margin: 2rem 0; */
+  }
+  
+  .webapp__PS-info {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+    color: var(--color-text);
+    text-shadow: 8px 4px 8px #000;
+    margin-bottom: 1rem;
+  }
+  
+  .webapp__PS-grid {
+    /* flex: 1.5; */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+    gap: 20px;
+    width: 900px;
+    height: 700px;
+    overflow-y: auto; 
+    border: 1px solid var(--color-golden);
+  }
+  /* Style for WebKit browsers (Chrome, Safari) */
+.webapp__PS-grid::-webkit-scrollbar {
+  width: 2px;
+}
+
+.webapp__PS-grid::-webkit-scrollbar-thumb {
+  background: var(--gradient-bar); 
+  border-radius: 6px;
+}
+
+.webapp__PS-grid::-webkit-scrollbar-track {
+  background: transparent; 
+}
+  
+  .webapp__PS-cards-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-height: 100%; /* Updated to allow proper scrolling */
+    overflow-y: auto; /* Added to enable vertical scrolling */
+  }
+  .webapp__PS-btn {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  @media screen and (max-width: 1050px) {
+    .webapp__PS-cards-container {
+      flex-wrap: none;
+      justify-content: center;
+
+    }
+  }

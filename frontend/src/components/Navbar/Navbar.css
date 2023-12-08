@@ -153,6 +153,10 @@
     color: var(--color-golden);
 }
 
+.nav__Submenu {
+    width: 180px;
+}
+
 @media screen and (max-width: 1050px) {
     .webapp__navbar-links_container {
         display: none ;

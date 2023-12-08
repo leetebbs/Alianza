@@ -5,6 +5,11 @@ import { Cta } from '../../components'
 import BtnLink from '../../components/BtnLink/BtnLink'
 import PublicWorkSection from '../../containers/PublicWorkSection/PublicWorkSection'
 import PublicWorkList from '../../components/PublicWorkList/PublicWorkList'
+// New
+import ProjectSection from '../../containers/ProjectSection/ProjectSection'
+import ProjectCard from '../../components/ProjectCard/ProjectCard'
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+// Fake DB
 import fakePublicWorksData from '../../data/fakeDataOnPW'
 console.log(fakePublicWorksData);
 const PublicWork = () => {
@@ -29,20 +34,20 @@ const PublicWork = () => {
 
   //  Public Work Listing Content
   const publicWorkListing = {
-    title:'On going Public Works',
-    text: `These are the public works currently being financed 
+    title:'On going Projects',
+    text: `These are the projects currently being voted 
     through our platform.`,
     btnLink: 'https://allianz-teal.vercel.app/public-works',
-    btnText: 'Finance a Public Work'
+    btnText: 'Vote'
   }
 
   // Completed Public Work Content      
   const completedPublicWork = {
-    title:'Completed Public Works',
-    text: `Take a look at the public works that have been succesfully
+    title:'Completed Projects',
+    text: `Take a look at the projects that have been succesfully
     financed and completed through our platform.`,
     btnLink: 'https://allianz-teal.vercel.app/public-works',
-    btnText: 'View Completed Works'
+    btnText: 'View Completed Projects'
   }
 
 
@@ -54,18 +59,31 @@ const PublicWork = () => {
         />
         {/* Public Work Listing */}
         <section className='page__hiw'>
-        <PublicWorkSection
+          {/* Project On to Vote Listing */}
+        <div className='section__padding'>
+        <ProjectSection
+          title={`Projects to Vote`}
+          text={'Select a project !'}
+        //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
+          gridDetails={fakePublicWorksData.map((work) => (
+        <ProjectCard key={work.id} work={work} />
+          ))}
+          btnLink={<ConnectButton label="Connect to Vote" accountStatus={"avatar"} />}
+        />
+          
+        </div>
+        {/* <PublicWorkSection
             title={publicWorkListing.title}
             text={publicWorkListing.text}
             gridDetails={<PublicWorkList 
-                title={`On going Public Works`}
+                title={`On going Projects`}
                 publicWorksData={fakePublicWorksData}
             />}
             btnLink={<BtnLink 
             btn_text={publicWorkListing.btnText}
             btn_link={publicWorkListing.btnLink}
             />}
-        />
+        /> */}
         </section>
         
         {/* Completed Public Work */}
@@ -74,7 +92,7 @@ const PublicWork = () => {
              title={completedPublicWork.title}
              text={completedPublicWork.text}
              gridDetails={<PublicWorkList
-                title={`Completed Public Works`}
+                title={`Completed Projects`}
                 publicWorksData={fakePublicWorksData}
                 />}
              btnLink={<BtnLink 
