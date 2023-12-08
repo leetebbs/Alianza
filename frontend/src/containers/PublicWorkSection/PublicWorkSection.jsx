@@ -7,10 +7,10 @@ const PublicWorkSection = ({title, text, gridDetails, btnLink}) => {
               <h2 className='gradient__text'>{title}</h2>
           </div>
           <div className='webapp__PWS-container'>
-              <div className='webapp__PWS-info'>
+              {/* <div className='webapp__PWS-info'>
                   <p>{text}</p>
                   
-              </div>
+              </div> */}
               <div className='webapp__PWS-grid'>
                   {/* Area to display <PublicWorkDetails />
                   component  */}
