@@ -54,7 +54,20 @@ const PublicWork = () => {
         />
         {/* Public Work Listing */}
         <section className='page__hiw'>
-        <PublicWorkSection
+          {/* Project On to Vote Listing */}
+        <div className='section__padding'>
+        <ProjectSection
+          title={`Projects to Vote`}
+          text={'Select a project !'}
+        //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
+          gridDetails={fakePublicWorksData.map((work) => (
+        <ProjectCard key={work.id} work={work} />
+          ))}
+          btnLink={<ConnectButton label="Connect to Vote" accountStatus={"avatar"} />}
+        />
+          
+        </div>
+        {/* <PublicWorkSection
             title={publicWorkListing.title}
             text={publicWorkListing.text}
             gridDetails={<PublicWorkList 
@@ -65,7 +78,7 @@ const PublicWork = () => {
             btn_text={publicWorkListing.btnText}
             btn_link={publicWorkListing.btnLink}
             />}
-        />
+        /> */}
         </section>
         
         {/* Completed Public Work */}
