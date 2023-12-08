@@ -29,20 +29,20 @@ const PublicWork = () => {
 
   //  Public Work Listing Content
   const publicWorkListing = {
-    title:'On going Public Works',
-    text: `These are the public works currently being financed 
+    title:'On going Projects',
+    text: `These are the projects currently being voted 
     through our platform.`,
     btnLink: 'https://allianz-teal.vercel.app/public-works',
-    btnText: 'Finance a Public Work'
+    btnText: 'Vote'
   }
 
   // Completed Public Work Content      
   const completedPublicWork = {
-    title:'Completed Public Works',
-    text: `Take a look at the public works that have been succesfully
+    title:'Completed Projects',
+    text: `Take a look at the projects that have been succesfully
     financed and completed through our platform.`,
     btnLink: 'https://allianz-teal.vercel.app/public-works',
-    btnText: 'View Completed Works'
+    btnText: 'View Completed Projects'
   }
 
 
@@ -58,7 +58,7 @@ const PublicWork = () => {
             title={publicWorkListing.title}
             text={publicWorkListing.text}
             gridDetails={<PublicWorkList 
-                title={`On going Public Works`}
+                title={`On going Projects`}
                 publicWorksData={fakePublicWorksData}
             />}
             btnLink={<BtnLink 
@@ -74,7 +74,7 @@ const PublicWork = () => {
              title={completedPublicWork.title}
              text={completedPublicWork.text}
              gridDetails={<PublicWorkList
-                title={`Completed Public Works`}
+                title={`Completed Projects`}
                 publicWorksData={fakePublicWorksData}
                 />}
              btnLink={<BtnLink 

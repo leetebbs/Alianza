@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
     gap: 20px;
-    max-height: 350px;
+    max-height: 450px;
     overflow-y: auto;
     border: 2px solid var(--color-gray);
     border-radius: 5px; 
