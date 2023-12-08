@@ -160,6 +160,7 @@ async function admins() {
   });
 }
 admins();
+
 //Listener to listen to when a vote is cast
 async function votes() {
   const websocketProvider = new ethers.providers.WebSocketProvider(
@@ -186,6 +187,52 @@ async function votes() {
   );
 }
 votes();
+
+// Endpoint to receive and save proposals
+app.post("/saveProposal", async (req, res) => {
+  try {
+    const {
+      project_title,
+      project_id,
+      project_description,
+      project_Info,
+      constr_company,
+      project_status,
+      project_benefit,
+      project_cost,
+      project_env_impact,
+      project_progress,
+      project_support,
+      project_rejection,
+      project_location,
+      project_image,
+    } = req.body;
+
+    const newProposal = new Proposal({
+      project_title,
+      project_id,
+      project_description,
+      project_Info,
+      constr_company,
+      project_status,
+      project_benefit,
+      project_cost,
+      project_env_impact,
+      project_progress,
+      project_support,
+      project_rejection,
+      project_location,
+      project_image,
+    });
+
+    const savedProposal = await newProposal.save();
+
+    res.status(201).json(savedProposal);
+  } catch (error) {
+    console.error("Error saving proposal:", error);
+    res.status(500).json({ error: "Failed to save proposal" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
