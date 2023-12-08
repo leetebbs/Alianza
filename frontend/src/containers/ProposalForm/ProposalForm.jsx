@@ -16,18 +16,8 @@ const serverURL = "https://alianza-hazel.vercel.app";
 
 const ProposalForm = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [propId, setPropId] = useState(0);
   const account = useAccount();
-
-  const contractRead = useContractRead({
-    address: votingAddress,
-    abi: mumbaiVotingABI,
-    functionName: "admins",
-    args: [account.address],
-    onSuccess(data) {
-      console.log("Success", data);
-      setIsAdmin(data);
-    },
-  });
 
   const [formData, setFormData] = useState({
     project_title: "",
@@ -45,6 +35,30 @@ const ProposalForm = () => {
     project_location: "",
     project_image: "",
     project_voting_duration: "",
+  });
+
+  useContractRead({
+    address: votingAddress,
+    abi: mumbaiVotingABI,
+    functionName: "admins",
+    args: [account.address],
+    onSuccess(data) {
+      console.log("Success", data);
+      setIsAdmin(data);
+    },
+  });
+
+  useContractRead({
+    address: votingAddress,
+    abi: mumbaiVotingABI,
+    functionName: "totalNumberOfProposalsCreated",
+    onSuccess(data) {
+      console.log("Success", parseInt(data));
+      setFormData((prevData) => ({
+        ...prevData,
+        project_id: parseInt(data),
+      }));
+    },
   });
 
   const {
@@ -92,65 +106,65 @@ const ProposalForm = () => {
       const writeResult = await write();
 
       // Check if the contract write was initiated successfully
-      if (writeResult && writeResult.data?.hash) {
-        // Use the hash for the wait for transaction hook
-        const waitForTxResult = await isSuccess({
-          hash: writeResult.data.hash,
-        });
+      // if (writeResult && writeResult.data?.hash) {
+      //   // Use the hash for the wait for transaction hook
+      //   const waitForTxResult = await isSuccess({
+      //     hash: writeResult.data.hash,
+      //   });
 
-        // Check if the transaction was successful
-        if (waitForTxResult.isSuccess) {
-          // Update the project_id with the hash
-          setFormData((prevData) => ({
-            ...prevData,
-            project_id: writeResult.data.hash,
-          }));
+      // Check if the transaction was successful
+      // if (waitForTxResult.isSuccess) {
+      //   // Update the project_id with the hash
+      //   setFormData((prevData) => ({
+      //     ...prevData,
+      //     project_id: writeResult.data.hash,
+      //   }));
 
-          // Send the form data as JSON
-          const response = await axios.post(
-            `${serverURL}/createProposal`,
-            formData,
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-
-          // Handle the response data (if needed)
-          console.log("Response from server:", response.data);
-
-          // Reset the form data if both operations are successful
-          setFormData({
-            project_title: "",
-            project_id: "",
-            project_description: "",
-            project_Info: "",
-            constr_company: "",
-            project_status: "",
-            project_benefit: "",
-            project_cost: "",
-            project_env_impact: "",
-            project_progress: "",
-            project_support: "",
-            project_rejection: "",
-            project_location: "",
-            project_image: "",
-            project_voting_duration: "",
-          });
-        } else {
-          // Handle transaction error
-          console.error(
-            "Error waiting for transaction:",
-            waitForTxResult.error
-          );
-          // You might want to show an error message to the user
+      // Send the form data as JSON
+      const response = await axios.post(
+        `${serverURL}/createProposal`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      } else {
-        // Handle contract write error
-        console.error("Error writing to the contract:", writeResult?.error);
-        // You might want to show an error message to the user
-      }
+      );
+
+      // Handle the response data (if needed)
+      console.log("Response from server:", response.data);
+
+      // Reset the form data if both operations are successful
+      setFormData({
+        project_title: "",
+        project_id: "",
+        project_description: "",
+        project_Info: "",
+        constr_company: "",
+        project_status: "",
+        project_benefit: "",
+        project_cost: "",
+        project_env_impact: "",
+        project_progress: "",
+        project_support: "",
+        project_rejection: "",
+        project_location: "",
+        project_image: "",
+        project_voting_duration: "",
+      });
+      //   } else {
+      //     // Handle transaction error
+      //     console.error(
+      //       "Error waiting for transaction:",
+      //       waitForTxResult.error
+      //     );
+      //     // You might want to show an error message to the user
+      //   }
+      // } else {
+      //   // Handle contract write error
+      //   console.error("Error writing to the contract:", writeResult?.error);
+      //   // You might want to show an error message to the user
+      // }
     } catch (error) {
       // Handle other errors
       console.error("Error creating proposal or submitting form:", error);
