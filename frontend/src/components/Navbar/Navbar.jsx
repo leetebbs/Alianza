@@ -14,11 +14,11 @@ import UserRegistrationModal from "../UserRegistrationModal/UserRegistrationModa
 
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
-  <>
+  <div className='nav__Submenu'>
     <p onClick={action}>
       <Link to={subMenu_link}>{subMenu_text}</Link>
     </p>
-  </>
+  </div>
 );
 const Navbar = () => {
   // Check wallet number
@@ -82,34 +82,34 @@ const Navbar = () => {
       {/* PUBLIC WORKS */}
       <div className="display__SubMenu">
         <p onClick={closeMenu}>
-          <Link to="/public-works">Public Works</Link>
+          <Link to="/public-works">Projects</Link>
         </p>
         <div className="subMenu__hide">
           <div className="subMenu__hide-item">
             <SubMenu
               subMenu_link={`/incentives`}
-              subMenu_text={`Health`}
+              subMenu_text={`Vote for a Project`}
               action={closeMenu}
             />
           </div>
           <div className="subMenu__hide-item">
             <SubMenu
-              subMenu_link={`/incentives`}
-              subMenu_text={`Education`}
+              subMenu_link={`/proposalform`}
+              subMenu_text={`Submit a Project`}
               action={closeMenu}
             />
           </div>
-          <div className="subMenu__hide-item">
+          {/* <div className="subMenu__hide-item">
             <SubMenu
               subMenu_link={`/incentives`}
               subMenu_text={`Sport`}
               action={closeMenu}
             />
-          </div>
+          </div> */}
         </div>
       </div>
       {/* TOOLS */}
-      <div className="display__SubMenu">
+      {/* <div className="display__SubMenu">
         <p onClick={closeMenu}>
           <Link to="/public-works">Tools</Link>
         </p>
@@ -129,15 +129,15 @@ const Navbar = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       {/* TRANSPARENCY */}
       <p onClick={closeMenu}>
         <Link to="/transparency">Transparency</Link>
       </p>
       {/* INCENTIVES */}
-      <p onClick={closeMenu}>
+      {/* <p onClick={closeMenu}>
         <Link to="/incentives">Incentives</Link>
-      </p>
+      </p> */}
     </>
   );
 

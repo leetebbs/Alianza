@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import HowItWorks from "./pages/HowItWorks/HowItWorks";
 import PublicWork from "./pages/PublicWork/PublicWork";
+import ProjectDetailPage from "./pages/ProjectDetailPage/ProjectDetailPage"
 // STYLES
 import "./App.css";
 import "./index.css";
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/public-works" element={<PublicWork />} />
+        <Route path="/public-works/:projectId" element={<ProjectDetailPage />} />
         <Route path="/transparency" element={<Transparency />} />
         <Route path="/incentives" element={<Incentives />} />
         <Route path="/test" element={<Test />} />
