@@ -17,16 +17,18 @@ const serverURL = "https://alianza-hazel.vercel.app";
 const ProposalForm = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [propId, setPropId] = useState(0);
+  const [proposals, setProposals] = useState([]);
   const account = useAccount();
 
   const fetchProposals = async () => {
     try {
       const response = await axios.get(`${serverURL}/getProposals`);
-      const proposals = response.data;
-      console.log("Fetched proposals:", proposals);
-      // Process the fetched proposals as needed
+      const fetchedProposals = response.data;
+      setProposals(fetchedProposals);
+      console.log("Fetched proposals:", fetchedProposals);
     } catch (error) {
       console.error("Error fetching proposals:", error);
+      // Handle error fetching proposals
     }
   };
 
