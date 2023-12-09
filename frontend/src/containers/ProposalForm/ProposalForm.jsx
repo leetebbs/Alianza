@@ -121,15 +121,11 @@ const ProposalForm = () => {
       //   }));
 
       // Send the form data as JSON
-      const response = await axios.post(
-        `${serverURL}/createProposal`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await axios.post(`${serverURL}/saveProposal`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       // Handle the response data (if needed)
       console.log("Response from server:", response.data);
@@ -201,7 +197,7 @@ const ProposalForm = () => {
                   Project ID:
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="project_id"
                   name="project_id"
                   value={formData.project_id}
@@ -293,7 +289,7 @@ const ProposalForm = () => {
                   Project Cost:
                 </label>
                 <input
-                  type="number"
+                  type="text"
                   id="project_cost"
                   name="project_cost"
                   value={formData.project_cost}

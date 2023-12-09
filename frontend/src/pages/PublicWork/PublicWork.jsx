@@ -3,8 +3,6 @@ import './PublicWork.css'
 import Intro from '../../components/intro/Intro'
 import { Cta } from '../../components'
 import BtnLink from '../../components/BtnLink/BtnLink'
-import PublicWorkSection from '../../containers/PublicWorkSection/PublicWorkSection'
-import PublicWorkList from '../../components/PublicWorkList/PublicWorkList'
 // New
 import ProjectSection from '../../containers/ProjectSection/ProjectSection'
 import ProjectCard from '../../components/ProjectCard/ProjectCard'
@@ -49,8 +47,6 @@ const PublicWork = () => {
     btnLink: 'https://allianz-teal.vercel.app/public-works',
     btnText: 'View Completed Projects'
   }
-
-
     return (
         <>
         <Intro 
@@ -72,19 +68,7 @@ const PublicWork = () => {
         />
           
         </div>
-        {/* <PublicWorkSection
-            title={publicWorkListing.title}
-            text={publicWorkListing.text}
-            gridDetails={<PublicWorkList 
-                title={`On going Projects`}
-                publicWorksData={fakePublicWorksData}
-            />}
-            btnLink={<BtnLink 
-            btn_text={publicWorkListing.btnText}
-            btn_link={publicWorkListing.btnLink}
-            />}
-        /> */}
-        </section>
+       </section>
         
         {/* Completed Public Work */}
         <section className='page__hiw'>
@@ -101,18 +85,6 @@ const PublicWork = () => {
           
         </div>
         
-        {/* <PublicWorkSection
-             title={completedPublicWork.title}
-             text={completedPublicWork.text}
-             gridDetails={<PublicWorkList
-                title={`Completed Projects`}
-                publicWorksData={fakePublicWorksData}
-                />}
-             btnLink={<BtnLink 
-             btn_text={completedPublicWork.btnText}
-             btn_link={completedPublicWork.btnLink}
-             />}
-        /> */}
         </section>
 
         <Cta

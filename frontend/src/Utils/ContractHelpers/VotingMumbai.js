@@ -5,14 +5,17 @@ import {
   useWaitForTransaction,
   useContractWrite,
   usePrepareContractWrite,
+  useAccount,
 } from "wagmi";
 
-export function VotingMumbai({ proposalId, support }) {
+export function VotingMumbai({ proposalId }) {
+  const account = useAccount();
+  const address = account?.address;
   const { config, error: prepareError } = usePrepareContractWrite({
     address: votingAddress,
     abi: mumbaiVotingABI,
     functionName: "vote",
-    args: [proposalId, support],
+    args: [address, proposalId, true],
   });
 
   const { data, error, isError, write } = useContractWrite(config);
@@ -42,7 +45,7 @@ export function VotingMumbai({ proposalId, support }) {
   return (
     <div>
       <button disabled={!write || isLoading} onClick={handleButtonClick}>
-        {isLoading ? "Voting..." : "Vote"}
+        {isLoading ? "Voting..." : "Vote For"}
       </button>
       {isSuccess && (
         <div>
