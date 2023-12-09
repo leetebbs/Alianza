@@ -58,7 +58,7 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </p>
       {/* HOW IT WORKS */}
-      <div className="display__SubMenu">
+      {/* <div className="display__SubMenu">
         <p onClick={closeMenu}>
           <Link to="/public-works">How it Works</Link>
         </p>
@@ -78,7 +78,7 @@ const Navbar = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       {/* PUBLIC WORKS */}
       <div className="display__SubMenu">
         <p onClick={closeMenu}>

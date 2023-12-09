@@ -42,7 +42,7 @@ const ProjectDetail = () => {
       <p>Description: {description}</p>
       <p>Progress: {progress}%</p>
       <p>Tokens for Financing: {tokens}</p>
-      <img src={image} alt={alt_image} />
+      
       {/* Add more details as needed */}
     </div>
   );
