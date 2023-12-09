@@ -1,6 +1,6 @@
 import React from "react";
-import { avaxFujiVotingAddress } from "../ContractsAddresses";
-import { avaxFujiVotingABI } from "../Abis";
+import { votingAddress } from "../ContractsAddresses";
+import { mumbaiVotingABI } from "../Abis";
 import {
   useWaitForTransaction,
   useContractWrite,
@@ -8,14 +8,14 @@ import {
   useAccount,
 } from "wagmi";
 
-export function VotingFuji({ proposalId }) {
+export function VotingMumbaiAgainst({ proposalId }) {
   const account = useAccount();
   const address = account?.address;
   const { config, error: prepareError } = usePrepareContractWrite({
-    address: avaxFujiVotingAddress,
-    abi: avaxFujiVotingABI,
+    address: votingAddress,
+    abi: mumbaiVotingABI,
     functionName: "vote",
-    args: [proposalId, true, 0],
+    args: [address, proposalId, false],
   });
 
   const { data, error, isError, write } = useContractWrite(config);
@@ -45,14 +45,14 @@ export function VotingFuji({ proposalId }) {
   return (
     <div>
       <button disabled={!write || isLoading} onClick={handleButtonClick}>
-        {isLoading ? "Voting..." : "Vote for"}
+        {isLoading ? "Voting..." : "Vote Against"}
       </button>
       {isSuccess && (
         <div>
           Success!
           <div>
-            <a href={`https://testnet.snowtrace.io/tx/${data?.hash}`}>
-              Snowtrace Fuji
+            <a href={`https://mumbai.polygonscan.com/tx/${data?.hash}`}>
+              MumbaiScan
             </a>
           </div>
         </div>

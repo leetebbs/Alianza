@@ -8,14 +8,14 @@ import {
   useAccount,
 } from "wagmi";
 
-export function VotingFuji({ proposalId }) {
+export function VotingFujiAgainst({ proposalId }) {
   const account = useAccount();
   const address = account?.address;
   const { config, error: prepareError } = usePrepareContractWrite({
     address: avaxFujiVotingAddress,
     abi: avaxFujiVotingABI,
     functionName: "vote",
-    args: [proposalId, true, 0],
+    args: [proposalId, false, 0],
   });
 
   const { data, error, isError, write } = useContractWrite(config);
@@ -45,7 +45,7 @@ export function VotingFuji({ proposalId }) {
   return (
     <div>
       <button disabled={!write || isLoading} onClick={handleButtonClick}>
-        {isLoading ? "Voting..." : "Vote for"}
+        {isLoading ? "Voting..." : "Vote Against"}
       </button>
       {isSuccess && (
         <div>
