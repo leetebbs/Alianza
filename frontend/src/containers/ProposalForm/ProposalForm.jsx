@@ -19,6 +19,22 @@ const ProposalForm = () => {
   const [propId, setPropId] = useState(0);
   const account = useAccount();
 
+  const fetchProposals = async () => {
+    try {
+      const response = await axios.get(`${serverURL}/getProposals`);
+      const proposals = response.data;
+      console.log("Fetched proposals:", proposals);
+      // Process the fetched proposals as needed
+    } catch (error) {
+      console.error("Error fetching proposals:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Call the fetchProposals function when the component mounts
+    fetchProposals();
+  }, []);
+
   const [formData, setFormData] = useState({
     project_title: "",
     project_id: "",

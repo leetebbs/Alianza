@@ -92,23 +92,29 @@ app.get("/balanceof", async (req, res) => {
   }
 });
 
-//get the proposals(index)
+// Update the getProposals endpoint to fetch all proposals
 app.get("/getProposals", async (req, res) => {
   try {
     const numberOfProposals =
       await votingContract.totalNumberOfProposalsCreated();
     console.log("numberOfProposals", numberOfProposals.toString());
-    const proposals = await votingContract.proposals(0);
-    res.json({
-      numberOfProposals: numberOfProposals.toString(),
-      name: proposals.name,
-      scope: proposals.scope,
-      forVotes: proposals.forVotes.toString(),
-      againstVotes: proposals.againstVotes.toString(),
-      deadline: proposals.deadline.toString(),
-      hasAdminEnded: proposals.hasAdminEnded,
-    });
-    console.log(proposals);
+
+    // Fetch all proposals
+    const allProposals = [];
+    for (let i = 0; i < numberOfProposals.toNumber(); i++) {
+      const proposal = await votingContract.proposals(i);
+      allProposals.push({
+        name: proposal.name,
+        scope: proposal.scope,
+        forVotes: proposal.forVotes.toString(),
+        againstVotes: proposal.againstVotes.toString(),
+        deadline: proposal.deadline.toString(),
+        hasAdminEnded: proposal.hasAdminEnded,
+      });
+    }
+
+    res.json(allProposals);
+    console.log(allProposals);
   } catch (error) {
     console.error("Error getting proposals:", error);
     res.status(500).json({ error: "Failed to get proposals" });
