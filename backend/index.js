@@ -7,13 +7,14 @@ const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "https://allianz-teal.vercel.app",
+  origin: ["https://alianza-hazel.vercel.app", "http://localhost:3000"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
