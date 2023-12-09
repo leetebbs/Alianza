@@ -8,18 +8,19 @@
 
 .webapp__proposalForm-title {
     flex: 1;
-    text-align: center;
-    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
     color: var(--color-text);
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 55px;
+    letter-spacing: 1.7px;
+    text-shadow: 1px 1px 2px var(--color-gray) ;
 }
 
-.webapp__proposalForm-title h1 {
-    font-family: var(--font-family);
-    font-weight: 800;
-    font-size: 50px;
-    line-height: 75px;
-    letter-spacing: -0.04em;
-}
 .webapp__proposalForm-form{
     display: flex;
     flex-direction: column;
@@ -45,7 +46,7 @@
 }
 
 .inputForm_label {
-    width: 250px;
+    width: 200px;
     min-height: 20px;
     font-family: var(--font-family);
     font-size: 16px;
@@ -58,6 +59,7 @@
     border-radius: 5px;
     background: transparent;
     margin: 0.5rem 0;
+    text-shadow: 1px 1px 2px var(--color-gray) ;
 }
 input, textarea {
     box-sizing: border-box;
@@ -65,7 +67,7 @@ input, textarea {
     padding: 0;
     margin: 0;
     font-family: var(--font-family);
-    font-size: 18px;
+    font-size: 14px;
 
 }
 textarea {
@@ -77,14 +79,15 @@ input[type="file"] {
     background: var(--color-gray);
     padding: 10px;
     height: 45px;
-    margin-left: -60px;
     border-radius: 5px;
+    width: 220px;
 }
   
 input[type="file"]:hover {
     cursor: pointer;
     border: 2px solid var(--color-golden)
 }
+.webapp__proposalForm-form,
 .webapp__proposalForm-btn {
     flex-wrap: nowrap;
     display: flex;
