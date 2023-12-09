@@ -14,7 +14,7 @@ import UserRegistrationModal from "../UserRegistrationModal/UserRegistrationModa
 
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
-  <div className='nav__Submenu'>
+  <div className="nav__Submenu">
     <p onClick={action}>
       <Link to={subMenu_link}>{subMenu_text}</Link>
     </p>
@@ -133,6 +133,11 @@ const Navbar = () => {
       {/* TRANSPARENCY */}
       <p onClick={closeMenu}>
         <Link to="/transparency">Transparency</Link>
+      </p>
+
+      {/* //mint */}
+      <p onClick={closeMenu}>
+        <Link to="/test">Registration NFT</Link>
       </p>
       {/* INCENTIVES */}
       {/* <p onClick={closeMenu}>
