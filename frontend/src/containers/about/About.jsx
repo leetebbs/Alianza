@@ -12,14 +12,12 @@ const About = () => {
         <div className='webapp__whatwebapp-container'>
           <Feature 
             title="Project" 
-            text="The 'Polygon Blockchain Platform for Citizen Financing of Municipal Public Works' is an
-            innovative concept that uses the Polygon network, compatible with Ethereum, and
-            Chainlink technology."
+            text=" Alianza is a project based on the Polygon, Chainlink, and MongoDB network that allows you to actively participate in the identification and deliberation of the public works and infrastructure services that you consider to be the most priority, beneficial, and sustainable."
+                 
           />
           <Feature
             title="Mission"
-            text="Our objective is to increase citizen participation in the financing of public works and
-            improve transparency in the use of public funds."
+            text="Alianza offers you a unique opportunity to participate in decision-making about public works and infrastructure services, which directly affect your quality of life and the development of your community"
           />
           
         </div>

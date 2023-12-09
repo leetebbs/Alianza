@@ -66,14 +66,15 @@
 
 .webapp__header-image {
     flex: 1;
-    display: flex;
+        display: flex;
     justify-content: center;
     align-items: center;
 }
-
+   
 .webapp__header-image img {
-    width: 80%;
-    height: auto;
+ width: 90%;
+ height:auto;
+
 }
 
 @media screen and (max-width: 1050px) {
