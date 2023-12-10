@@ -17,6 +17,9 @@ const ProjectDetail = () => {
   const address = account?.address;
   const location = useLocation();
 
+  let forVotes = 0;
+  let againstVotes = 0;
+
   // Extract data from the location state
   const { id, image, alt_image, title, description, progress, benefit } =
     location.state || {};
@@ -48,19 +51,27 @@ const ProjectDetail = () => {
   // const projectId = 9;
 
   // fetch the votes for and against for the proposal with wagmi
+
   const Fetchvotes = async () => {
-    const favorites = useContractRead({
-      address: votingAddress,
-      abi: mumbaiVotingABI,
-      functionName: "proposals",
-      args: [projectId],
-    });
+    try {
+      const favorites = useContractRead({
+        address: votingAddress,
+        abi: mumbaiVotingABI,
+        functionName: "proposals",
+        args: [projectId],
+      });
 
-    console.log("favorites", favorites.data);
+      console.log("favorites", favorites.data);
+      let votesfor = favorites.data[2];
+      forVotes = parseInt(votesfor);
+      let votesagainst = favorites.data[3];
+      againstVotes = parseInt(votesagainst);
+      // };
+    } catch (error) {
+      console.log(error);
+    }
   };
-
   Fetchvotes();
-
   // Replace this function with your actual function to fetch project details
   const getProjectDetails = (projectId) => {
     // Fetch project details based on projectId from your data source (e.g., API call, database query)
@@ -104,6 +115,8 @@ const ProjectDetail = () => {
       <p>Description: {description}</p>
       <p>Progress: {progress}%</p>
       <p>Benefit: {benefit}</p>
+      <p>For Votes: {forVotes}</p>
+      <p>Against Votes: {againstVotes}</p>
       <div>
         {chain === mumbaiChainId && (
           <div className="voting-btns">

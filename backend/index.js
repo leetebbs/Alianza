@@ -125,13 +125,26 @@ app.post("/createProposal", cors(corsOptions), async (req, res) => {
   }
 });
 
-app.get('/getworkdatas', (req, res) => {
- WorkData.find({})
-   .then(data => {
-      console.log(data); // Agrega este console.log para verificar los datos recuperados
-      res.json(data);
-    })
-    .catch(err => res.json(err));
+// app.get("/getworkdatas", (req, res) => {
+//   WorkData.find({})
+//     .then((data) => {
+//       console.log(data); // Agrega este console.log para verificar los datos recuperados
+//       res.json(data);
+//     })
+//     .catch((err) => res.json(err));
+// });
+
+// Update the getWorkdata endpoint to fetch all proposals
+app.get("/getworkdata", async (req, res) => {
+  try {
+    // Fetch all proposals from the MongoDB database
+    const workdata = await WorkData.find();
+    res.json(workdata);
+    console.log("Fetched proposals:", workdata);
+  } catch (error) {
+    console.error("Error getting proposals:", error);
+    res.status(500).json({ error: "Failed to get proposals" });
+  }
 });
 
 //Creating a listener for NFT minting
