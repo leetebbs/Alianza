@@ -44,10 +44,10 @@ const PublicWork = () => {
   // CTA Content
   const ctaInfo = {
     title: `Ready to Make a Difference?`,
-    text: `Join us in transforming our city. Purchase tokens, 
-    finance public works, track progress, and earn rewards. Your participation
+    text: `Join us in transforming our city. Get to decide, track progress,
+     and be an active participant on your community. Your participation
     makes a difference.`,
-    btnText: `Sign Up Now`,
+    btnText: `Connect`,
     btnLink: `https://allianz-teal.vercel.app/public-works`,
   };
 
