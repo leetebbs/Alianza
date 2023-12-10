@@ -10,8 +10,7 @@ const corsOptions = {
   origin: [
     "https://alianza-hazel.vercel.app",
     "http://localhost:3000",
-    "https://allianz-teal.vercel.app/",
-    "*",
+    "https://allianz-teal.vercel.app",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
@@ -189,8 +188,7 @@ app.post("/saveProposal", cors(corsOptions), async (req, res) => {
   res.header(
     "Access-Control-Allow-Origin",
     "https://alianza-hazel.vercel.app, http://localhost:3000",
-    "*",
-    "https://allianz-teal.vercel.app/"
+    "https://allianz-teal.vercel.app"
   );
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Methods", "POST");
