@@ -8,6 +8,19 @@ const Transparency = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedId, setSelectedId] = useState(null);
 
+<<<<<<< HEAD
+=======
+  // CTA Content
+  const ctaInfo = {
+    title:`Experience the Power of Blockchain Transparency`,
+    text:`Immerse yourself in the world of transparent smart
+     contracts on Polygon. Real-time data and traceability, 
+     courtesy of Chainlink, are changing the game. Dive 
+     into the blockchain revolution now!`,
+    btnText:`Experience Traceability`,
+    btnLink: `https://allianz-teal.vercel.app/public-works`
+  }
+>>>>>>> 58c540ffa9c91618036c8807d06ee4c34ebdb4c5
 
     useEffect(() => {
         const fetchData = async () => {

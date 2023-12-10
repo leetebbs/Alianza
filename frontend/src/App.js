@@ -16,6 +16,7 @@ import Incentives from "./pages/Incentives/Incentives";
 import Test from "./pages/Test/Test";
 import Admin from "./pages/Admin/Admin";
 import ProposalForm from "./containers/ProposalForm/ProposalForm";
+import VoteProject from "./pages/VotePoject/VotePoject";
 
 const App = () => {
   return (
@@ -28,13 +29,14 @@ const App = () => {
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/public-works" element={<PublicWork />} />
         <Route path="/public-works/:projectId" element={<ProjectDetailPage />} />
+        <Route path="/public-works/project-to-vote" element={<VoteProject/>} />
         <Route path="/transparency" element={<Transparency />} />
         <Route path="/incentives" element={<Incentives />} />
         <Route path="/test" element={<Test />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/proposalform" element={<ProposalForm />} />
       </Routes>
-      <Footer />
+      <Footer /> 
     </div>
   );
 };

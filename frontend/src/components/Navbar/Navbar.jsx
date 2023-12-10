@@ -89,7 +89,7 @@ const Navbar = () => {
                 <div className="subMenu__hide">
                     <div className="subMenu__hide-item">
                         <SubMenu
-                            subMenu_link={`/incentives`}
+                            subMenu_link={`/public-works/project-to-vote`}
                             subMenu_text={`Vote for a Project`}
                             action={closeMenu}
                         />

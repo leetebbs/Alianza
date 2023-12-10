@@ -215,7 +215,7 @@ const ProposalForm = () => {
                   Project ID:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="project_id"
                   name="project_id"
                   value={formData.project_id}
@@ -307,7 +307,7 @@ const ProposalForm = () => {
                   Project Cost:
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   id="project_cost"
                   name="project_cost"
                   value={formData.project_cost}

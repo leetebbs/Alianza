@@ -8,7 +8,11 @@ const WorkData = require("./models/work_data");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: ["https://alianza-hazel.vercel.app", "http://localhost:3000"],
+  origin: [
+    "https://alianza-hazel.vercel.app",
+    "http://localhost:3000",
+    "https://allianz-teal.vercel.app",
+  ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
@@ -108,7 +112,7 @@ app.get("/getProposals", async (req, res) => {
 
 app.options("/createProposal", cors(corsOptions));
 app.post("/createProposal", cors(corsOptions), async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Origin", "https://alianza-hazel.vercel.app");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Methods", "POST");
   try {
@@ -190,7 +194,14 @@ async function votes() {
 votes();
 
 // Endpoint to receive and save proposals
-app.post("/saveProposal", async (req, res) => {
+app.post("/saveProposal", cors(corsOptions), async (req, res) => {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://alianza-hazel.vercel.app, http://localhost:3000",
+    "https://allianz-teal.vercel.app"
+  );
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "POST");
   try {
     const {
       project_title,

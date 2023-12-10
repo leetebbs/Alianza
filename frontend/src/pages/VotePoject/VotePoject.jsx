@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./PublicWork.css";
+import "./VotePoject.css";
 import Intro from "../../components/intro/Intro";
 import { Cta } from "../../components";
 import BtnLink from "../../components/BtnLink/BtnLink";
@@ -11,7 +11,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import fakePublicWorksData from "../../data/fakeDataOnPW";
 import axios from "axios";
 // console.log(fakePublicWorksData);
-const PublicWork = () => {
+const VotePoject = () => {
   const [proposalData, setProposalData] = useState([]);
   const serverURL = "https://alianza-hazel.vercel.app";
   // const fetchData = async () => {
@@ -43,7 +43,7 @@ const PublicWork = () => {
 
   // CTA Content
   const ctaInfo = {
-    title: `Ready to Make a Difference?`,
+    title: `Make a Difference!`,
     text: `Join us in transforming our city. Get to decide, track progress,
      and be an active participant on your community. Your participation
     makes a difference.`,
@@ -60,14 +60,6 @@ const PublicWork = () => {
     btnText: "Vote",
   };
 
-  // Completed Public Work Content
-  const completedPublicWork = {
-    title: "Completed Projects",
-    text: `Take a look at the projects that have been succesfully
-    financed and completed through our platform.`,
-    btnLink: "https://allianz-teal.vercel.app/public-works",
-    btnText: "View Completed Projects",
-  };
   return (
     <>
       <Intro title={introInfo.title} text={introInfo.text} />
@@ -77,45 +69,23 @@ const PublicWork = () => {
         <div className="section__padding">
           <ProjectSection
             title={`Projects to Vote`}
-            text={"Select a project !"}
+            text={"Select a project and Vote!"}
             //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
             gridDetails={proposalData.map((work) => (
-              <ProjectCard key={work?.project_id} 
-              id={work?.project_id}
-              title={work?.project_title} 
-              description={work?.project_description}
-              progress={work?.project_progress}
-              benefit={work?.project_benefit}
-              />
-            ))}
+                <ProjectCard key={work?.project_id} 
+                id={work?.project_id}
+                title={work?.project_title} 
+                description={work?.project_description}
+                progress={work?.project_progress}
+                benefit={work?.project_benefit}
+                />
+              ))}
             btnLink={
               <ConnectButton label="Connect to Vote" accountStatus={"avatar"} />
             }
           />
         </div>
       </section>
-
-      {/* Completed Public Work */}
-      <section className="page__hiw">
-        <div className="section__padding">
-          <ProjectSection
-            title={`Projects Completed`}
-            text={"Look to pass project !"}
-            //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
-            gridDetails={proposalData.map((work) => (
-              <ProjectCard key={work?.project_id} 
-              id={work?.project_id}
-              title={work?.project_title} 
-              description={work?.project_description}
-              progress={work?.project_progress}
-              benefit={work?.project_benefit}
-              />
-            ))}
-            // btnLink={<ConnectButton label="Connect to Vote" accountStatus={"avatar"} />}
-          />
-        </div>
-      </section>
-
       <Cta
         cta_title={ctaInfo.title}
         cta_text={ctaInfo.text}
@@ -126,4 +96,4 @@ const PublicWork = () => {
   );
 };
 
-export default PublicWork;
+export default VotePoject;
