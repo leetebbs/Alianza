@@ -49,10 +49,10 @@
     font-family: var(--font-family);
 }
   
-  .webapp__PS-info,
+  /* .webapp__PS-info,
   .webapp__PS-grid {
     /* margin: 2rem 0; */
-  }
+  /* } */ */
   
   .webapp__PS-info {
     
@@ -60,6 +60,7 @@
     justify-content: center;
     align-items: center;
     font-family: var(--font-family);
+    letter-spacing: 0.04rem;
     font-weight: 500;
     font-size: 30px;
     line-height: 45px;
@@ -67,9 +68,7 @@
     text-shadow: 8px 4px 8px #000;
     margin-bottom: 1rem;
   }
-  .webapp__PS-info p {
-    letter-spacing: 1rem;
-  }
+  
   
   .webapp__PS-grid {
     /* flex: 1.5; */
