@@ -72,12 +72,12 @@ const VotePoject = () => {
             text={"Select a project and Vote!"}
             //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
             gridDetails={proposalData.map((work) => (
-                <ProjectCard key={work.project_id} 
-                id={work.project_id}
-                title={work.project_title} 
-                description={work.project_description}
-                progress={work.project_progress}
-                benefit={work.project_benefit}
+                <ProjectCard key={work?.project_id} 
+                id={work?.project_id}
+                title={work?.project_title} 
+                description={work?.project_description}
+                progress={work?.project_progress}
+                benefit={work?.project_benefit}
                 />
               ))}
             btnLink={
