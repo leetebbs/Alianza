@@ -16,7 +16,8 @@ const ProjectDetail = () => {
   const location = useLocation();
 
   // Extract data from the location state
-  const { id, image, alt_image, title, description, progress, benefit } = location.state || {};
+  const { id, image, alt_image, title, description, progress, benefit } =
+    location.state || {};
 
   //check if user account has already voted and has an nft to vote
   //chainIds
@@ -32,19 +33,53 @@ const ProjectDetail = () => {
   useEffect(() => {
     async function checkChain() {
       if (window.ethereum) {
-        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+        const chainId = await window.ethereum.request({
+          method: "eth_chainId",
+        });
         setChain(chainId);
       }
     }
     checkChain();
   }, [chain]);
 
-  if (!id) {
-    // Data not available, handle accordingly
+  const { projectId } = useParams();
+  // const projectId = 9;
+
+  // Replace this function with your actual function to fetch project details
+  const getProjectDetails = (projectId) => {
+    // Fetch project details based on projectId from your data source (e.g., API call, database query)
+    // Return the project details object
+    // For demonstration purposes, return a mock project details object
+    return {
+      id: projectId,
+      title: `Project ${projectId}`,
+      description: `Description for Project ${projectId}`,
+      progress: Math.floor(Math.random() * 100), // Random progress for demonstration
+      tokens: Math.floor(Math.random() * 200), // Random tokens for demonstration
+      image: `./projectImages/project${projectId}.png`, // Replace with the actual image path
+      alt_image: `Project ${projectId} Image`,
+      // Add more details as needed
+    };
+  };
+
+  // Fetch project details based on projectId from your data source
+  const projectDetails = getProjectDetails(projectId);
+
+  // const projectDetails = fakePublicWorksData;
+
+  if (!projectDetails) {
     return <div>Loading...</div>;
   }
 
-  console.log("Project Details:", { id, image, alt_image, title, description, progress, benefit });
+  console.log("Project Details:", {
+    id,
+    image,
+    alt_image,
+    title,
+    description,
+    progress,
+    benefit,
+  });
 
   return (
     <div className="project-detail-container">
