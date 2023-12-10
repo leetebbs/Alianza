@@ -31,8 +31,10 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     async function checkChain() {
-      const chainId = await window.ethereum.request({ method: "eth_chainId" });
-      setChain(chainId);
+      if (window.ethereum) {
+        const chainId = await window.ethereum.request({ method: "eth_chainId" });
+        setChain(chainId);
+      }
     }
     checkChain();
   }, [chain]);
