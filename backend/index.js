@@ -7,13 +7,14 @@ const Proposal = require("./models/proposals");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: "https://allianz-teal.vercel.app",
+  origin: ["https://alianza-hazel.vercel.app", "http://localhost:3000"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
@@ -91,23 +92,13 @@ app.get("/balanceof", async (req, res) => {
   }
 });
 
-//get the proposals(index)
+// Update the getProposals endpoint to fetch all proposals
 app.get("/getProposals", async (req, res) => {
   try {
-    const numberOfProposals =
-      await votingContract.totalNumberOfProposalsCreated();
-    console.log("numberOfProposals", numberOfProposals.toString());
-    const proposals = await votingContract.proposals(0);
-    res.json({
-      numberOfProposals: numberOfProposals.toString(),
-      name: proposals.name,
-      scope: proposals.scope,
-      forVotes: proposals.forVotes.toString(),
-      againstVotes: proposals.againstVotes.toString(),
-      deadline: proposals.deadline.toString(),
-      hasAdminEnded: proposals.hasAdminEnded,
-    });
-    console.log(proposals);
+    // Fetch all proposals from the MongoDB database
+    const proposals = await Proposal.find();
+    res.json(proposals);
+    console.log("Fetched proposals:", proposals);
   } catch (error) {
     console.error("Error getting proposals:", error);
     res.status(500).json({ error: "Failed to get proposals" });

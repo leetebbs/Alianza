@@ -14,11 +14,19 @@ import UserRegistrationModal from "../UserRegistrationModal/UserRegistrationModa
 
 // SubMenu
 const SubMenu = ({ action, subMenu_link, subMenu_text }) => (
+<<<<<<< HEAD
     <div className='nav__Submenu'>
         <p onClick={action}>
             <Link to={subMenu_link}>{subMenu_text}</Link>
         </p>
     </div>
+=======
+  <div className="nav__Submenu">
+    <p onClick={action}>
+      <Link to={subMenu_link}>{subMenu_text}</Link>
+    </p>
+  </div>
+>>>>>>> db81c5f646b840d279df01e1dce5cf5a6757a93d
 );
 const Navbar = () => {
     // Check wallet number
@@ -130,12 +138,26 @@ const Navbar = () => {
           </div>
         </div>
       </div> */}
+<<<<<<< HEAD
             {/* TRANSPARENCY */}
             <p onClick={closeMenu}>
                 <Link to="/transparency">Transparency</Link>
             </p>
             {/* INCENTIVES */}
             {/* <p onClick={closeMenu}>
+=======
+      {/* TRANSPARENCY */}
+      <p onClick={closeMenu}>
+        <Link to="/transparency">Transparency</Link>
+      </p>
+
+      {/* //mint */}
+      <p onClick={closeMenu}>
+        <Link to="/test">Registration NFT</Link>
+      </p>
+      {/* INCENTIVES */}
+      {/* <p onClick={closeMenu}>
+>>>>>>> db81c5f646b840d279df01e1dce5cf5a6757a93d
         <Link to="/incentives">Incentives</Link>
       </p> */}
         </>
