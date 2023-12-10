@@ -69,7 +69,7 @@ const VotePoject = () => {
         <div className="section__padding">
           <ProjectSection
             title={`Projects to Vote`}
-            text={"Select a project !"}
+            text={"Select a project and Vote!"}
             //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
             gridDetails={fakePublicWorksData.map((work) => (
               <ProjectCard key={work.id} work={work} />
