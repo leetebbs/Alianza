@@ -11,7 +11,7 @@ const Home = () => {
 //    strength={500}
 //    bgImageStyle={{maxWidth: '200vh', maxheight: '50vh'}}
 //  >
-    <div style={{ height: '400vh' }}>
+    <div style={{ height: '550vh' }}>
       <Header />
       <About />
       <HowItWork />
