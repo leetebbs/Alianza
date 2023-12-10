@@ -91,14 +91,14 @@ const ProjectDetail = () => {
       <div>
         {chain === mumbaiChainId && (
           <div className="voting-btns">
-            <VotingMumbai proposalId={id} />
-            <VotingMumbaiAgainst proposalId={id} />
+            <VotingMumbai proposalId={projectId} />
+            <VotingMumbaiAgainst proposalId={projectId} />
           </div>
         )}
         {chain === fujiChainId && (
           <div className="voting-btns">
-            <VotingFuji proposalId={id} />
-            <VotingFujiAgainst proposalId={id} />
+            <VotingFuji proposalId={projectId} />
+            <VotingFujiAgainst proposalId={projectId} />
           </div>
         )}
       </div>
