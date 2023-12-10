@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./VoteProject.css";
+import "./VotePoject.css";
 import Intro from "../../components/intro/Intro";
 import { Cta } from "../../components";
 import BtnLink from "../../components/BtnLink/BtnLink";
@@ -11,7 +11,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import fakePublicWorksData from "../../data/fakeDataOnPW";
 import axios from "axios";
 // console.log(fakePublicWorksData);
-const VoteProject = () => {
+const VotePoject = () => {
   const [proposalData, setProposalData] = useState([]);
   const serverURL = "https://alianza-hazel.vercel.app";
   // const fetchData = async () => {
@@ -90,4 +90,4 @@ const VoteProject = () => {
   );
 };
 
-export default VoteProject;
+export default VotePoject;
