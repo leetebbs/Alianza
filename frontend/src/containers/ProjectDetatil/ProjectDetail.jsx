@@ -4,6 +4,8 @@ import { useParams, useLocation } from "react-router-dom";
 import fakePublicWorksData from "../../data/fakeDataOnPW";
 import "./ProjectDetail.css"; // Import your CSS file
 import { useContractRead, useAccount } from "wagmi";
+import { votingAddress } from "../../Utils/ContractsAddresses";
+import { mumbaiVotingABI } from "../../Utils/Abis";
 import { VotingMumbai } from "../../Utils/ContractHelpers/VotingMumbai";
 import { VotingMumbaiAgainst } from "../../Utils/ContractHelpers/VotingMumbaiAgainst";
 import { VotingFuji } from "../../Utils/ContractHelpers/VotingFuji";
@@ -44,6 +46,20 @@ const ProjectDetail = () => {
 
   const { projectId } = useParams();
   // const projectId = 9;
+
+  // fetch the votes for and against for the proposal with wagmi
+  const Fetchvotes = async () => {
+    const favorites = useContractRead({
+      address: votingAddress,
+      abi: mumbaiVotingABI,
+      functionName: "proposals",
+      args: [projectId],
+    });
+
+    console.log("favorites", favorites.data);
+  };
+
+  Fetchvotes();
 
   // Replace this function with your actual function to fetch project details
   const getProjectDetails = (projectId) => {

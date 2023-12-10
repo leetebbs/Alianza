@@ -9,6 +9,7 @@ import {
 } from "wagmi";
 
 export function VotingMumbai({ proposalId }) {
+  console.log("mubai component : ", proposalId);
   const account = useAccount();
   const address = account?.address;
   const { config, error: prepareError } = usePrepareContractWrite({
