@@ -15,9 +15,12 @@ const Transparency = () => {
 
   // CTA Content
   const ctaInfo = {
-    title:``,
-    text:``,
-    btnText:``,
+    title:`Experience the Power of Blockchain Transparency`,
+    text:`Immerse yourself in the world of transparent smart
+     contracts on Polygon. Real-time data and traceability, 
+     courtesy of Chainlink, are changing the game. Dive 
+     into the blockchain revolution now!`,
+    btnText:`Experience Traceability`,
     btnLink: `https://allianz-teal.vercel.app/public-works`
   }
 
