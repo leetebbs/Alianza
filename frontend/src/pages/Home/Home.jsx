@@ -18,7 +18,7 @@ const Home = () => {
       <Cta
         cta_title={`Get Involved`}
         cta_text={`Join us in transforming our city. Explore the projects,Vote for them, Check the voting results. Your participation makes a difference.`}
-        cta_btn_text={`Sign Up Now`}
+        cta_btn_text={`Connect`}
         cta_btn_link={`https://allianz-teal.vercel.app/`}
       />
     </div>
