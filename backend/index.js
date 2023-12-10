@@ -4,6 +4,7 @@ const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const Proposal = require("./models/proposals");
+const WorkData = require("./models/work_data");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
@@ -118,6 +119,15 @@ app.post("/createProposal", cors(corsOptions), async (req, res) => {
     console.error("Error creating proposal:", error);
     res.status(500).json({ error: "Failed to create proposal" });
   }
+});
+
+app.get('/getworkdatas', (req, res) => {
+ WorkData.find({})
+   .then(data => {
+      console.log(data); // Agrega este console.log para verificar los datos recuperados
+      res.json(data);
+    })
+    .catch(err => res.json(err));
 });
 
 //Creating a listener for NFT minting

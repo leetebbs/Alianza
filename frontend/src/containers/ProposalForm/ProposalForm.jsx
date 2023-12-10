@@ -342,7 +342,7 @@ const ProposalForm = () => {
                   name="project_progress"
                   value={formData.project_progress}
                   onChange={handleChange}
-                  required
+                //  required
                 />
               </div>
 
@@ -357,7 +357,7 @@ const ProposalForm = () => {
                   name="project_support"
                   value={formData.project_support}
                   onChange={handleChange}
-                  required
+                //  required
                 />
               </div>
 
@@ -372,7 +372,7 @@ const ProposalForm = () => {
                   name="project_rejection"
                   value={formData.project_rejection}
                   onChange={handleChange}
-                  required
+                //  required
                 />
               </div>
 

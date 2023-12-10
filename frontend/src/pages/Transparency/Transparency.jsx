@@ -1,69 +1,75 @@
-import React from 'react'
-import './Transparency.css'
-import Intro from '../../components/intro/Intro'
-import { Cta } from '../../components'
-import Steps from '../../containers/Steps/Steps'
-import logoAlianza02 from '../../assets/logoAlianza02.png'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import CardComponent from '../../components/CardComponent/CardComponent';
+
+
 const Transparency = () => {
-  
-   // INTRO Content
-  const introInfo = {
-    title: `Transparency: Building Trust with Blockchain`,
-    text : `Transparency is one of the key benefits of blockchain technology. Here's how we ensure
-    transparency in every transaction on our platform.`,
-  }
+    const [data, setData] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedId, setSelectedId] = useState(null);
 
-  // CTA Content
-  const ctaInfo = {
-    title:``,
-    text:``,
-    btnText:``,
-    btnLink: `https://allianz-teal.vercel.app/public-works`
-  }
 
-    // SECTION DATA
-    // Transparency and Traceability
-    const transparencyContent  = {
-        title: `Transparency and Traceability in Action`,
-        text: `Smart contracts on Polygon are transparent and auditable, allowing anyone to verify
-        transactions and contract status. Chainlink provides real-time data such as work progress reports,
-        recorded on the blockchain for traceability.`,
-        media: logoAlianza02,
-        alt_media: `logoAlianza02`,
-        btnLink: `https://allianz-teal.vercel.app/public-works`,
-        btnText: `View Public Works`
-    }
- 
-   return (
-    <>
-    <Intro 
-            title={introInfo.title}
-            text={introInfo.text}
-        />
-        {/* Transparency and Traceability */}
-        <section className='page__hiw'>
-            <Steps 
-                title={transparencyContent.title}
-                text={transparencyContent.text}
-                media={transparencyContent.media}
-                alt_media={transparencyContent.alt_media}
-                btnLink={
-                    <btnLink 
-                        btnLink={transparencyContent.btnLink}
-                        btnText={transparencyContent.btnText}
-                    />
-                }
-            />
-        </section>
-        <Cta
-            cta_title={ctaInfo.title}
-            cta_text={ctaInfo.text}
-            cta_btn_link={ctaInfo.btnLink}
-            cta_btn_text={ctaInfo.btnText}
-        
-        />
-    </>     
-  )
-}
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await axios.get('http://localhost:3000/getworkdatas');
+                console.log(result);
+                setData(result.data.reduce((obj, item) => ({ ...obj, [item._id]: item }), {}));
+            } catch(error) {
+                console.error('Error:', error);
+            }
+        };
 
-export default Transparency
+        fetchData();
+    }, []);
+
+
+    const handleClick = (id) => {
+        setSelectedId(id);
+    };
+
+    const handleClose = () => {
+        setSelectedId(null);
+    };
+
+    return (
+        <div className="container">
+            <div>
+                 <h1>TRANSPARENCY</h1>
+            </div>
+           
+            {selectedItem ? (
+                <CardComponent data={data} setSelectedItem={setSelectedItem} setSelectedId={setSelectedId} />
+            ) : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Public Work Name</th>
+                            <th>Location</th>
+                            <th>Budget</th>
+                            <th>Schedule</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Object.values(data).map((item) => (
+                            <tr key={item._id}>
+                                <td>{item.Public_work_name}</td>
+                                <td>{item.location}</td>
+                                <td>{item.budget}</td>
+                                <td>{item.schedule}</td>
+                                <td>
+                                    <button onClick={() => handleClick(item._id)}>
+                                        Ver detalles
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </div>
+    );
+};
+
+export default Transparency;
