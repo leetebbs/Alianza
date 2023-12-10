@@ -49,10 +49,10 @@
     font-family: var(--font-family);
 }
   
-  .webapp__PS-info,
-  .webapp__PS-grid {
+  /* .webapp__PS-info,
+  .webapp__PS-grid { */
     /* margin: 2rem 0; */
-  }
+  /* } */
   
   .webapp__PS-info {
     

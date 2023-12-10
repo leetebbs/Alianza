@@ -79,8 +79,14 @@ const PublicWork = () => {
             title={`Projects to Vote`}
             text={"Select a project !"}
             //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
-            gridDetails={fakePublicWorksData.map((work) => (
-              <ProjectCard key={work.id} work={work} />
+            gridDetails={proposalData.map((work) => (
+              <ProjectCard key={work.project_id} 
+              id={work.project_id}
+              title={work.project_title} 
+              description={work.project_description}
+              progress={work.project_progress}
+              benefit={work.project_benefit}
+              />
             ))}
             btnLink={
               <ConnectButton label="Connect to Vote" accountStatus={"avatar"} />
@@ -96,8 +102,14 @@ const PublicWork = () => {
             title={`Projects Completed`}
             text={"Look to pass project !"}
             //  fakePublicWorksData Need to be replace by the DATA from the DATABASE of Projects
-            gridDetails={fakePublicWorksData.map((work) => (
-              <ProjectCard key={work.id} work={work} />
+            gridDetails={proposalData.map((work) => (
+              <ProjectCard key={work.project_id} 
+              id={work.project_id}
+              title={work.project_title} 
+              description={work.project_description}
+              progress={work.project_progress}
+              benefit={work.project_benefit}
+              />
             ))}
             // btnLink={<ConnectButton label="Connect to Vote" accountStatus={"avatar"} />}
           />
